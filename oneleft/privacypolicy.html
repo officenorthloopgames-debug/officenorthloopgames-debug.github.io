@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenschutzerklärung — One Left</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --ink: #14161c;
+    --muted: #5a6072;
+    --bg: #ffffff;
+    --rule: #e3e6ee;
+    --accent: #0b6bcb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #e7e9f0; --muted: #a2a9bd; --bg: #12141a; --rule: #2a2e3a; --accent: #6cb2ff; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 46rem; margin: 0 auto; padding: 3rem 1.4rem 5rem; }
+  h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 .3rem; letter-spacing: -.02em; }
+  .updated { color: var(--muted); font-size: .93rem; margin: 0 0 2.2rem; }
+  h2 {
+    font-size: 1.18rem; margin: 2.6rem 0 .7rem; padding-top: 1.4rem;
+    border-top: 1px solid var(--rule); letter-spacing: -.01em;
+  }
+  h3 { font-size: 1.02rem; margin: 1.8rem 0 .6rem; letter-spacing: -.005em; }
+  p { margin: 0 0 1rem; }
+  ul { margin: 0 0 1rem; padding-left: 1.3rem; }
+  li { margin-bottom: .55rem; }
+  strong { font-weight: 600; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .9em; background: color-mix(in srgb, var(--rule) 60%, transparent);
+    padding: .1em .35em; border-radius: 3px;
+  }
+  a { color: var(--accent); overflow-wrap: anywhere; }
+  .tabelle { overflow-x: auto; margin: 0 0 1rem; }
+  table { border-collapse: collapse; width: 100%; font-size: .94rem; }
+  th, td { text-align: left; vertical-align: top; padding: .5rem .7rem; border-bottom: 1px solid var(--rule); }
+  th { font-weight: 600; }
+  footer {
+    margin-top: 3.5rem; padding-top: 1.2rem; border-top: 1px solid var(--rule);
+    color: var(--muted); font-size: .88rem;
+  }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Datenschutzerklärung — One Left</h1>
+<p class="updated">Stand: 5. Oktober 2026 · <a href="privacypolicy-en.html" lang="en">English version</a></p>
+<p>One Left ist ein Rätselspiel für Android. Das Spielen selbst läuft offline: Ein Tipp zündet eine Kettenreaktion, genau ein Punkt bleibt übrig — dabei wird nichts an mich oder an Dritte gesendet. Ins Netz gehen genau <strong>vier</strong> Vorgänge, und alle vier sind unten einzeln beschrieben: die Einwilligungsabfrage, die Werbung selbst (Zwischenwerbung zwischen Leveln, ein Werbebanner am unteren Bildschirmrand und die freiwilligen Belohnungsvideos), Käufe über Google Play und eine Statistik darüber, wie das Spiel benutzt wird. Diese Erklärung sagt Ihnen, was die App auf Ihrem Gerät speichert, was bei diesen Wegen verarbeitet wird, wer es bekommt, auf welcher Rechtsgrundlage und welche Rechte Sie haben.</p>
+<p>App: One Left (Paketname <code>com.northloopgames.oneleft</code>), vertrieben über Google Play.</p>
+<hr>
+
+<h2>1. Verantwortlicher</h2>
+<p>Verantwortlich für die Verarbeitung im Sinne von Art. 4 Nr. 7 DSGVO ist:</p>
+<ul>
+  <li>Raphael Esslinger</li>
+  <li>Frauenalber Straße 39</li>
+  <li>76199 Karlsruhe</li>
+  <li>Deutschland</li>
+  <li>E-Mail: <a href="mailto:support.northloopsgame@gmail.com">support.northloopsgame@gmail.com</a></li>
+</ul>
+<p>Ein <strong>Datenschutzbeauftragter</strong> ist nicht benannt, weil die Voraussetzungen dafür nicht vorliegen: Art. 37 DSGVO greift nicht (keine Behörde, keine umfangreiche regelmäßige Überwachung, keine umfangreiche Verarbeitung besonderer Kategorien), und § 38 BDSG greift nicht (es sind nicht mindestens 20 Personen ständig mit automatisierter Verarbeitung beschäftigt — es ist eine Einzelperson).</p>
+
+<h2>2. Was die App auf Ihrem Gerät speichert</h2>
+<p>Alles Folgende liegt <strong>nur auf Ihrem Gerät</strong>. Es gibt kein Konto und keinen Server bei mir.</p>
+<ul>
+  <li>Spielfortschritt und Sterne je Level</li>
+  <li>Bestwerte und die Tipps, die für das Replay nötig sind</li>
+  <li>Tagesbrett-Chronik</li>
+  <li>Zähl- und Zeitstände: Versuche, Knapp-daneben, Wiederholungen, Zeitanker</li>
+  <li>Einstellungen: Ton, Vibration, „Statistik senden" (Feld <code>statistik</code>)</li>
+  <li><strong>der Kaufzustand „Werbefrei"</strong></li>
+  <li><strong>die Werbezähler</strong>: <code>levelSeitInterstitial</code>, <code>interstitialsHeute</code>, <code>interstitialDatum</code>, <code>interstitialsGesamt</code>, <code>letzterWerbungZeitanker</code></li>
+  <li>die vom UMP-SDK gespeicherte Einwilligungsantwort</li>
+</ul>
+<p>Orte: die Dateien <code>oneleft-save.json</code> und <code>oneleft-save.bak.json</code> im privaten App-Ordner sowie die privaten Einstellungen der Google-SDKs.</p>
+<p><strong>Rechtsgrundlage:</strong> § 25 Abs. 2 Nr. 2 TDDDG für den Spielstand (die Speicherung ist unbedingt erforderlich, damit das Spiel seinen Zweck erfüllt); § 25 Abs. 1 TDDDG in Verbindung mit Art. 6 Abs. 1 lit. a DSGVO für alles, was das Werbe-SDK ablegt.</p>
+<p><strong>Speicherdauer:</strong> solange die App installiert ist. Androids Auto Backup sichert diese Dateien in das Google-Konto des Nutzers; das ist eine Funktion des Betriebssystems, nicht von mir. Deinstallieren löscht die lokalen Daten.</p>
+
+<h2>3. Google als Empfänger</h2>
+<p>Empfänger der unten beschriebenen Daten sind:</p>
+<ul>
+  <li>Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (EWR)</li>
+  <li>Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA</li>
+</ul>
+<p>Bei der Abwicklung der Käufe und beim Ausliefern der Werbung ist Google <strong>eigenständig Verantwortlicher</strong> und nicht mein Auftragsverarbeiter. Was Google dabei tut, steht in Googles eigenen Unterlagen:</p>
+<ul>
+  <li><a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
+  <li><a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a></li>
+</ul>
+
+<h2>4. In-App-Käufe</h2>
+<p>Es gibt genau <strong>ein</strong> Produkt: „Werbefrei", 1,99 €, <strong>nicht verbrauchbar</strong>, abgewickelt über Google Play Billing, in der App eingebunden über das Unity-Paket <code>com.unity.purchasing 5.4.2</code> und die Google Play Billing Library.</p>
+<p>Die App sieht <strong>keine</strong> Zahlungsdaten — keine Kartennummer, keine Rechnungsadresse, keinen Namen. Von Google Play bekommt die App nur: die Produktkennung, das Bestell- beziehungsweise Kauftoken, den Kaufstatus und den Zeitpunkt.</p>
+<p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Erfüllung des Vertrags über den Kauf).</p>
+<p>Weil das Produkt nicht verbrauchbar ist, ist es <strong>wiederherstellbar</strong>: Ein früherer Kauf kommt über „Käufe wiederherstellen" oder von selbst beim nächsten Start zurück.</p>
+<p><em>Stand dieser Fassung:</em> Der Kaufweg ist im ausgelieferten Paket derzeit <strong>nicht</strong> enthalten; die Berechtigung <code>com.android.vending.BILLING</code> fehlt im Manifest, und im Spiel gibt es kein Kaufangebot. Dieser Abschnitt gilt, sobald der Kaufweg ausgeliefert wird.</p>
+
+<h2>5. Werbung</h2>
+<h3>5.1 Die vier Werbeplätze, einzeln</h3>
+<ul>
+  <li><strong>Zwischenwerbung</strong> zwischen Leveln: frühestens nach Level 6, höchstens jedes 4. Level, höchstens 8 am Tag, jeweils mit 3 Sekunden Vorwarnung. Nie mitten in einem Level.</li>
+  <li><strong>Werbebanner</strong> in einem eigenen Streifen am unteren Bildschirmrand: frühestens ab Level 6, nur auf der Inselkarte, auf der Ergebniskarte und während eine Kettenreaktion läuft. Nie, solange Sie ins Feld tippen sollen, nie im Tagesbrett, nie über dem Spielfeld. Nur Text- und Bildanzeigen, keine Videos.</li>
+  <li><strong>Belohnungsvideo „Zweiter Funke"</strong>: freiwillig, nur wenn Sie es antippen.</li>
+  <li><strong>Belohnungsvideo „Zielhilfe"</strong>: freiwillig, nur wenn Sie es antippen.</li>
+</ul>
+<h3>5.2 Das SDK</h3>
+<p>Die Werbung liefert das <strong>Google Mobile Ads SDK</strong> (AdMob), eingebunden als <code>com.google.ads.mobile 11.5.0</code>. Die Einwilligungsabfrage stellt die <strong>Google User Messaging Platform</strong> (UMP), die Teil desselben Pakets ist.</p>
+<h3>5.3 Was Google beim Ausliefern verarbeitet</h3>
+<ul>
+  <li>die <strong>Werbe-ID</strong> Ihres Geräts (Advertising ID)</li>
+  <li>Ihre IP-Adresse (gekürzt oder ungekürzt, nach Googles Angaben)</li>
+  <li>Geräte- und App-Angaben (Modell, Betriebssystemfassung, Sprache, App-Fassung)</li>
+  <li>einen ungefähren Standort, den Google aus der IP-Adresse schätzt — das ist <em>keine</em> Standortberechtigung; das Spiel liest Ihren Standort nie</li>
+  <li>Ihre Interaktion mit der Anzeige (gesehen, angetippt, abgebrochen)</li>
+</ul>
+<h3>5.4 Einwilligung zuerst</h3>
+<p>Ohne Ihre Einwilligung wird <code>MobileAds.Initialize</code> nie gerufen, es geht kein Request hinaus, und das Spiel ist <strong>vollständig spielbar</strong>. Ein Nein sperrt nichts.</p>
+<h3>5.5 Widerruf</h3>
+<p>Sie widerrufen jederzeit über <strong>Einstellungen → Datenschutz → „Einwilligung ändern"</strong> (Art. 7 Abs. 3 S. 4 DSGVO: der Widerruf muss so einfach sein wie die Erteilung). Danach werden bereits geladene Anzeigen verworfen, und es wird nichts Neues angefragt.</p>
+<h3>5.6 Profilbildung</h3>
+<p>Ob Google personalisiert ausliefert, hängt allein an Ihrer Einwilligung. Lehnen Sie ab, wird überhaupt keine Anzeige angefragt.</p>
+<h3>5.7 Obergrenze der Werbeinhalte</h3>
+<p>Die Obergrenze steht auf <strong>G</strong> — für alle Altersgruppen geeignet.</p>
+<h3>5.8 Übermittlung in die USA</h3>
+<p>Google LLC sitzt in den USA. Grundlage der Übermittlung ist das EU-US Data Privacy Framework, für das die Europäische Kommission am <strong>10.07.2023</strong> einen Angemessenheitsbeschluss erlassen hat; Google LLC ist dort zertifiziert.</p>
+<h3>5.9 Was der Kauf ändert</h3>
+<p><strong>Der Kauf „Werbefrei" beendet die Zwischenwerbung und den Werbebanner dauerhaft; danach wird für beide kein Request mehr gestellt.</strong> Die beiden Belohnungsvideos bleiben freiwillig und werden dann ohne Video gutgeschrieben.</p>
+
+<h2>6. Statistik (Nutzungsanalyse)</h2>
+<p><em>Stand dieser Fassung:</em> Das Analyse-SDK ist im ausgelieferten Paket derzeit <strong>nicht</strong> enthalten. Dieser Abschnitt gilt, sobald es ausgeliefert wird; der Schalter dafür ist im Spiel bereits vorhanden und steht ab Werk auf „an", wirkt aber erst nach Ihrer Einwilligung.</p>
+<h3>6.1 Wozu</h3>
+<p>Um zu sehen, welches Level zu schwer ist und welche Hilfe benutzt wird. Nichts davon dient der Werbung. Erfasst werden nur Ereignisse des Spiels: Start der Sitzung, ein knapp verfehltes Ziel, ein „Nochmal", ein beendeter Versuch (mit Levelnummer und übrigen Punkten), ein geschafftes Level (mit Sternen und Versuchen), ein Tagesbrett, gesehene Belohnungsvideos, gezeigte Zwischenwerbungen, der Kauf „Werbefrei" und die erteilte Einwilligung selbst.</p>
+<h3>6.2 Das SDK</h3>
+<p>Die Statistik läuft über <strong>Google Analytics for Firebase</strong>. Google verarbeitet die Daten dabei <strong>in meinem Auftrag</strong> (Auftragsverarbeitung) und nicht als eigener Verantwortlicher — anders als bei der Werbung in Abschnitt 5.</p>
+<h3>6.3 Was verarbeitet wird</h3>
+<ul>
+  <li>eine von Firebase erzeugte <strong>App-Instanz-Kennung</strong> (keine Werbe-ID, kein Konto, kein Name)</li>
+  <li>Geräte- und App-Angaben (Modell, Betriebssystemfassung, Sprache, App-Fassung)</li>
+  <li>die in 6.1 genannten Ereignisse mit ihren Zahlen</li>
+</ul>
+<p>Es gibt keinen Namen, keine E-Mail-Adresse und keine Verbindung zu einem Konto. Ihr Spielstand selbst wird <strong>nicht</strong> übertragen.</p>
+<h3>6.4 Rechtsgrundlage, und die Reihenfolge</h3>
+<p><strong>§ 25 Abs. 1 TDDDG</strong> für den Zugriff auf Ihr Endgerät (die App-Instanz-Kennung) und <strong>Art. 6 Abs. 1 lit. a DSGVO</strong> für die Verarbeitung danach. Vor Ihrer Einwilligung wird nichts erfasst und nichts gesendet: die Erfassung im SDK ist ausdrücklich abgeschaltet und wird erst durch Ihre Antwort freigegeben.</p>
+<h3>6.5 Widerruf und Abschalten</h3>
+<p>Zwei Wege, beide wirken sofort: <strong>Einstellungen → „Statistik senden"</strong> schaltet die Statistik aus, und <strong>Einstellungen → Datenschutz → „Einwilligung ändern"</strong> widerruft die Einwilligung (Art. 7 Abs. 3 S. 4 DSGVO).</p>
+<h3>6.6 Empfänger und Übermittlung</h3>
+<p>Empfänger ist Google (Anschriften in Abschnitt 3). Für die Übermittlung in die USA gilt dasselbe wie in 5.8: EU-US Data Privacy Framework, Angemessenheitsbeschluss vom 10.07.2023.</p>
+<h2>7. Berechtigungen der App</h2>
+<p>Das ausgelieferte Paket führt die folgenden Berechtigungen. Vier gehören dem Spiel selbst, sechs bringt das Werbe-SDK mit, und eine steht nur dann darin, wenn der Kaufweg mit ausgeliefert wird.</p>
+<div class="tabelle">
+<table>
+<thead><tr><th>Berechtigung</th><th>Wofür</th></tr></thead>
+<tbody>
+<tr><td><code>android.permission.INTERNET</code></td><td>Abruf der Werbung und der Einwilligungsabfrage</td></tr>
+<tr><td><code>android.permission.ACCESS_NETWORK_STATE</code></td><td>das Werbe-SDK prüft, ob eine Verbindung besteht</td></tr>
+<tr><td><code>com.google.android.gms.permission.AD_ID</code></td><td>die Werbe-ID des Geräts für AdMob</td></tr>
+<tr><td><code>android.permission.VIBRATE</code></td><td>kurze Vibration bei Treffern; <strong>es werden dabei keine Daten verarbeitet</strong></td></tr>
+<tr><td><code>android.permission.ACCESS_ADSERVICES_AD_ID</code></td><td>Androids Privacy-Sandbox-Schnittstelle, die das Google Mobile Ads SDK mitbringt</td></tr>
+<tr><td><code>android.permission.ACCESS_ADSERVICES_ATTRIBUTION</code></td><td>Androids Privacy-Sandbox-Schnittstelle, die das Google Mobile Ads SDK mitbringt</td></tr>
+<tr><td><code>android.permission.ACCESS_ADSERVICES_TOPICS</code></td><td>Androids Privacy-Sandbox-Schnittstelle, die das Google Mobile Ads SDK mitbringt</td></tr>
+<tr><td><code>android.permission.FOREGROUND_SERVICE</code></td><td>von der Hilfsbibliothek <code>androidx.work</code> mitgebracht, die das Werbe-SDK einbindet. <strong>Eigener Code startet keinen Vordergrunddienst.</strong></td></tr>
+<tr><td><code>android.permission.WAKE_LOCK</code></td><td>von <code>play-services-measurement-sdk-api</code> mitgebracht, das das Werbe-SDK einbindet. <strong>Eigener Code verwendet keinen WakeLock.</strong> Dass der Bildschirm während des Spielens anbleibt, macht die App über ihr Fenster und nicht über diese Berechtigung.</td></tr>
+<tr><td><code>com.northloopgames.oneleft.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code></td><td>rein app-interne Schutzkennung auf Signaturebene, von der Hilfsbibliothek <code>androidx.core</code> mitgebracht. Sie gibt keinen Zugriff auf Ihr Gerät und ist für andere Apps unerreichbar.</td></tr>
+<tr><td><code>com.android.vending.BILLING</code></td><td><strong>nur wenn der Kaufweg im ausgelieferten Paket ist</strong> (Abschnitt 4): Abwicklung des Kaufs über Google Play. Im derzeit ausgelieferten Paket fehlt diese Berechtigung.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Die App greift <strong>nicht</strong> auf Kontakte, Standort, Kamera, Mikrofon, Kalender oder Dateien außerhalb ihres eigenen Speichers zu. Es gibt keine Benachrichtigungen.</p>
+
+<h2>8. Was die App nicht tut</h2>
+<ul>
+  <li>kein Konto, keine Anmeldung, keine Registrierung</li>
+  <li>kein Server bei mir</li>
+  <li>keine Bestenliste, kein Chat, kein Teilen von Inhalten</li>
+  <li>kein Standortzugriff, keine Kontakte, keine Kamera, kein Mikrofon</li>
+  <li>keine Benachrichtigungen</li>
+  <li>kein Crashlytics, kein Unity Analytics, kein Adjust, kein AppsFlyer — die Nutzungsanalyse läuft allein über Google Analytics for Firebase und nur mit Ihrer Einwilligung (Abschnitt 6)</li>
+  <li>keine Weitergabe an Dritte außer an Google in dem oben beschriebenen Umfang</li>
+</ul>
+
+<h2>9. Müssen Sie Daten bereitstellen?</h2>
+<p><strong>Nein.</strong> Ohne Einwilligung und ohne Kauf ist das Spiel vollständig spielbar: alle 120 Level und jedes Tagesbrett sind ohne Geld und ohne Werbung erreichbar. „Nochmal" ist immer sofort und kostenlos.</p>
+
+<h2>10. Löschen</h2>
+<ul>
+  <li><strong>Deinstallieren</strong> löscht alle lokalen Daten der App.</li>
+  <li>Die <strong>Werbe-ID</strong> lässt sich in den Android-Einstellungen unter „Datenschutz → Werbung" zurücksetzen oder löschen.</li>
+  <li>Androids <strong>Auto Backup</strong> lässt sich unter „Google → Sicherung" entfernen.</li>
+  <li>Ein Konto, das gelöscht werden könnte, gibt es nicht — es existiert keines.</li>
+</ul>
+
+<h2>11. Ihre Rechte</h2>
+<p>Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20), Widerspruch (Art. 21) und Widerruf einer Einwilligung (Art. 7 Abs. 3).</p>
+<p>Für die Daten, die bei <strong>Google</strong> anfallen, ist Google die auskunftspflichtige Stelle: Ich habe keinen Zugriff darauf und kann sie weder herausgeben noch löschen. Wenden Sie sich dafür an Google über die in Abschnitt 3 genannten Seiten.</p>
+
+<h2>12. Beschwerderecht</h2>
+<p>Sie können sich bei einer Datenschutz-Aufsichtsbehörde beschweren. Zuständig ist:</p>
+<ul>
+  <li>Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg</li>
+  <li>Lautenschlagerstraße 20</li>
+  <li>70173 Stuttgart</li>
+</ul>
+
+<h2>13. Kinder</h2>
+<p>Die Zielgruppe ist <strong>13 Jahre und älter</strong>. Das Spiel richtet sich nicht an Kinder unter 13 Jahren. Die Werbeinhalte sind auf die Obergrenze <strong>G</strong> begrenzt (siehe 5.7).</p>
+
+<h2>14. Änderungen</h2>
+<p>Diese Fassung hat den Stand <strong>5. Oktober 2026</strong>. Änderungen werden auf dieser Seite veröffentlicht; die jeweils geltende Fassung ist die hier abrufbare.</p>
+
+<h2>15. Kontakt</h2>
+<p>Fragen zum Datenschutz an: <a href="mailto:support.northloopsgame@gmail.com">support.northloopsgame@gmail.com</a></p>
+
+<footer>
+Raphael Esslinger · Frauenalber Straße 39 · 76199 Karlsruhe · Deutschland ·
+<a href="mailto:support.northloopsgame@gmail.com">support.northloopsgame@gmail.com</a>
+</footer>
+
+</main>
+</body>
+</html>
