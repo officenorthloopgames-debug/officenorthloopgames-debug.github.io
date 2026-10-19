@@ -46,6 +46,10 @@
   table { border-collapse: collapse; width: 100%; font-size: .94rem; }
   th, td { text-align: left; vertical-align: top; padding: .5rem .7rem; border-bottom: 1px solid var(--rule); }
   th { font-weight: 600; }
+  .kasten {
+    border: 2px solid var(--accent); border-radius: 6px; padding: .2rem 1.1rem .4rem; margin: 1.4rem 0 1rem;
+  }
+  .kasten h3 { margin-top: 1rem; }
   footer {
     margin-top: 3.5rem; padding-top: 1.2rem; border-top: 1px solid var(--rule);
     color: var(--muted); font-size: .88rem;
@@ -56,8 +60,8 @@
 <main>
 
 <h1>Datenschutzerklärung — One Left</h1>
-<p class="updated">Stand: 5. Oktober 2026 · <a href="privacypolicy-en.html" lang="en">English version</a></p>
-<p>One Left ist ein Rätselspiel für Android. Das Spielen selbst läuft offline: Ein Tipp zündet eine Kettenreaktion, genau ein Punkt bleibt übrig — dabei wird nichts an mich oder an Dritte gesendet. Ins Netz gehen genau <strong>vier</strong> Vorgänge, und alle vier sind unten einzeln beschrieben: die Einwilligungsabfrage, die Werbung selbst (Zwischenwerbung zwischen Leveln, ein Werbebanner am unteren Bildschirmrand und die freiwilligen Belohnungsvideos), Käufe über Google Play und eine Statistik darüber, wie das Spiel benutzt wird. Diese Erklärung sagt Ihnen, was die App auf Ihrem Gerät speichert, was bei diesen Wegen verarbeitet wird, wer es bekommt, auf welcher Rechtsgrundlage und welche Rechte Sie haben.</p>
+<p class="updated">Stand: 19. Oktober 2026 · <a href="privacypolicy-en.html" lang="en">English version</a></p>
+<p>One Left ist ein Rätselspiel für Android. Das Spielen selbst läuft offline: Ein Tipp zündet eine Kettenreaktion, genau ein Punkt bleibt übrig — dabei wird nichts an mich oder an Dritte gesendet. Ins Netz gehen genau <strong>drei</strong> Vorgänge, und alle drei sind unten einzeln beschrieben: die Einwilligungsabfrage (Googles Prüfung, ob in Ihrer Region eine Einwilligung nötig ist) und die Werbung selbst (Zwischenwerbung nach geschafften Leveln oder beim Verlassen eines Levels zur Karte, ein dauerhaftes Werbebanner am unteren Bildschirmrand und drei freiwillige Belohnungsvideos); zur Werbung gehört auch die Messung, die Googles Werbe-SDK selbst vornimmt, sobald die Werbung gestartet ist (5.3) — nicht schon beim Öffnen der App; und der Kauf „Werbefrei" über Google Play samt der Abfrage früherer Käufe bei Google Play bei jedem Start und den Protokollen, die Googles Bibliothek für Käufe dabei an Google sendet (Abschnitt 4). Für den Kauf ist eine Programmbibliothek von Unity eingebunden; sie läuft auf Ihrem Gerät und sendet in dieser App keine Daten an Unity (4.5). Die App hat <strong>kein eigenes Analyse-SDK</strong>: Nutzungsdaten erhalte ich nicht. Diese Erklärung sagt Ihnen, was die App auf Ihrem Gerät speichert, was bei diesen Wegen verarbeitet wird, wer es bekommt, auf welcher Rechtsgrundlage und welche Rechte Sie haben.</p>
 <p>App: One Left (Paketname <code>com.northloopgames.oneleft</code>), vertrieben über Google Play.</p>
 <hr>
 
@@ -73,92 +77,93 @@
 <p>Ein <strong>Datenschutzbeauftragter</strong> ist nicht benannt, weil die Voraussetzungen dafür nicht vorliegen: Art. 37 DSGVO greift nicht (keine Behörde, keine umfangreiche regelmäßige Überwachung, keine umfangreiche Verarbeitung besonderer Kategorien), und § 38 BDSG greift nicht (es sind nicht mindestens 20 Personen ständig mit automatisierter Verarbeitung beschäftigt — es ist eine Einzelperson).</p>
 
 <h2>2. Was die App auf Ihrem Gerät speichert</h2>
-<p>Alles Folgende liegt <strong>nur auf Ihrem Gerät</strong>. Es gibt kein Konto und keinen Server bei mir.</p>
+<p>Alles Folgende liegt <strong>auf Ihrem Gerät</strong> und, wenn Androids Sicherung eingeschaltet ist, in der Sicherung Ihres Google-Kontos (siehe „Speicherdauer" unten). <strong>Bei mir liegt nichts:</strong> Es gibt kein Konto und keinen Server bei mir.</p>
+<p>Die vollständige Liste, so wie die App sie im Spielstand führt (Feldnamen in Klammern):</p>
 <ul>
-  <li>Spielfortschritt und Sterne je Level</li>
-  <li>Bestwerte und die Tipps, die für das Replay nötig sind</li>
-  <li>Tagesbrett-Chronik</li>
-  <li>Zähl- und Zeitstände: Versuche, Knapp-daneben, Wiederholungen, Zeitanker</li>
-  <li>Einstellungen: Ton, Vibration, „Statistik senden" (Feld <code>statistik</code>)</li>
-  <li><strong>der Kaufzustand „Werbefrei"</strong></li>
-  <li><strong>die Werbezähler</strong>: <code>levelSeitInterstitial</code>, <code>interstitialsHeute</code>, <code>interstitialDatum</code>, <code>interstitialsGesamt</code>, <code>letzterWerbungZeitanker</code></li>
-  <li>die vom UMP-SDK gespeicherte Einwilligungsantwort</li>
+  <li><strong>je Level</strong> (Feld <code>levels</code>): Sterne (<code>stars</code>), Bestwert (<code>best</code>), Zahl der Versuche (<code>attempts</code>), Fehlversuche in Folge (<code>failStreak</code>), ob und wie oft eine Hilfe genutzt wurde (<code>helped</code>, <code>hint</code>), die Tipps, die für das Replay des Bestwerts und des Zweiten Funkens nötig sind (<code>bT</code>, <code>bX</code>, <code>bY</code>, <code>b2T</code>, <code>b2X</code>, <code>b2Y</code>: Zeitpunkt und Ort des Tipps im Spielfeld, kein Ort in der Welt) und der Stand der Glühbirne (<code>tipp</code>): ob der Tipp für dieses Level schon freigeschaltet ist und ob sich die Glühbirne dort schon einmal angeboten hat</li>
+  <li><strong>Tagesbrett-Chronik</strong> (Feld <code>daily</code>): je Tagesbrett die Tagesnummer (<code>day</code>), der Bestwert (<code>best</code>), die Versuche (<code>tries</code>) und der Tipp des Bestwerts (<code>t</code>, <code>x</code>, <code>y</code>)</li>
+  <li><strong>der Zweite Funke</strong> (Feld <code>spark</code>): Zustand, Level, Tipp und Versuchskennung (<code>state</code>, <code>level</code>, <code>t</code>, <code>x</code>, <code>y</code>, <code>endTick</code>, <code>attemptId</code>), dazu die Versuchszähler <code>attemptSeq</code> und <code>sparkUsedAttempt</code></li>
+  <li><strong>Verwaltung des Spielstands</strong>: Schemaversion (<code>v</code>), Prüfsumme gegen Beschädigung (<code>sum</code>), Zeitpunkt der ersten Anlage (<code>createdMs</code>) und ein Zeitanker (<code>anchorMs</code>), der bei jedem Speichern steigt, damit eine ältere Sicherung einen neueren Stand nicht überschreibt</li>
+  <li><strong>Einstellungen</strong>: Ton (<code>sound</code>), Vibration (<code>vibration</code>) und das Feld <code>statistik</code>, ein Überbleibsel ohne Funktion — die App führt keine Statistik, und das Feld steuert nichts (Abschnitt 6)</li>
+  <li><strong>Merker des Spiels</strong>: welche Einführungskarten schon gezeigt wurden (<code>hintsSeen</code>, <code>artenGesehen</code>), welche Inselmomente schon gezeigt wurden (<code>inselFertigWelt</code>), ob die Ankunft in einer neuen Welt schon gezeigt wurde (<code>weltAnkunft</code>, ab Version 1.1 mit der zweiten Welt), ob der Hinweisbildschirm zur Werbung schon gezeigt wurde (<code>consentShown</code>) und ob der einmalige Hinweis auf „Werbefrei" schon gezeigt wurde (<code>werbefreiHinweisGezeigt</code>)</li>
+  <li><strong>das Kaufbit</strong> (<code>werbefrei</code>): „ja", sobald Google Play einen Kauf „Werbefrei" bestätigt hat, sonst „nein" (Abschnitt 4). Gespeichert wird nur dieses Ja oder Nein, kein Beleg und kein Kauftoken.</li>
+  <li><strong>die Werbezähler</strong>: <code>levelSeitInterstitial</code>, <code>interstitialsHeute</code>, <code>interstitialDatum</code> (das Datum auf Ihrem Gerät, an dem gezählt wird), <code>interstitialsGesamt</code>, <code>letzterWerbungZeitanker</code> (wann zuletzt eine Zwischenwerbung kam, damit der Mindestabstand eingehalten wird)</li>
+  <li><strong>die Spielzähler</strong> (Feld <code>m</code>, dreizehn Zähler): <code>nearMiss</code> (knapp daneben), <code>retryNochmal</code>, <code>retrySpark</code>, <code>retryHint</code> (Wiederholungen nach „Nochmal", Zweitem Funken und Glühbirne), <code>attemptsMap</code>, <code>attemptsDaily</code> (Versuche auf der Karte und im Tagesbrett), <code>daysPlayed</code>, <code>lastDay</code> (gespielte Tage), <code>hintNotConfirmed</code> (nicht bestätigte Glühbirne), <code>videoSpark</code>, <code>videoHint</code>, <code>videoTotal</code> (gesehene Belohnungsvideos), <code>interstitialFehl</code> (Zwischenwerbungen, die nicht kamen). Diese Zähler bleiben auf dem Gerät und werden nirgends hin gesendet.</li>
+  <li>die vom UMP-SDK gespeicherte Einwilligungsantwort (nicht im Spielstand, sondern in den privaten Einstellungen des Google-SDKs)</li>
 </ul>
 <p>Orte: die Dateien <code>oneleft-save.json</code> und <code>oneleft-save.bak.json</code> im privaten App-Ordner sowie die privaten Einstellungen der Google-SDKs.</p>
-<p><strong>Rechtsgrundlage:</strong> § 25 Abs. 2 Nr. 2 TDDDG für den Spielstand (die Speicherung ist unbedingt erforderlich, damit das Spiel seinen Zweck erfüllt); § 25 Abs. 1 TDDDG in Verbindung mit Art. 6 Abs. 1 lit. a DSGVO für alles, was das Werbe-SDK ablegt.</p>
-<p><strong>Speicherdauer:</strong> solange die App installiert ist. Androids Auto Backup sichert diese Dateien in das Google-Konto des Nutzers; das ist eine Funktion des Betriebssystems, nicht von mir. Deinstallieren löscht die lokalen Daten.</p>
+<p><strong>Systemprotokoll:</strong> Zur Fehlersuche schreibt die App kurze Zeilen über den Ablauf von Werbung, Einwilligung und (ab Version 1.1) Kauf in das Systemprotokoll („Logcat") Ihres Geräts, zum Beispiel ob eine Zwischenwerbung gezeigt wurde oder ob Google Play das Produkt samt Preis geliefert hat. Diese Zeilen enthalten kein Konto, keinen Namen, keinen Kaufbeleg, kein Kauftoken und keine Transaktionsnummer. Die App sendet dieses Protokoll nirgendwohin.</p>
+<p><strong>Rechtsgrundlage:</strong> § 25 Abs. 2 Nr. 2 TDDDG für den Spielstand einschließlich des Kaufbits (die Speicherung ist unbedingt erforderlich, damit das Spiel seinen Zweck erfüllt und ein gekaufter Zustand erhalten bleibt); § 25 Abs. 1 TDDDG in Verbindung mit Art. 6 Abs. 1 lit. a DSGVO für alles, was das Werbe-SDK ablegt, soweit eine Einwilligung vorgeschrieben ist (Abschnitt 5.4).</p>
+<p><strong>Speicherdauer:</strong> solange die App installiert ist. Androids Auto Backup sichert die beiden Spielstand-Dateien in das Google-Konto des Nutzers und spielt sie bei einer Neuinstallation zurück; das ist eine Funktion des Betriebssystems, die die App dafür ausdrücklich einschaltet. Deinstallieren löscht die Daten auf dem Gerät, nicht diese Sicherung (Abschnitt 10).</p>
 
 <h2>3. Google als Empfänger</h2>
-<p>Empfänger der unten beschriebenen Daten sind:</p>
+<p>Empfänger der unten beschriebenen Daten sind (für den Kauf ab Version 1.1 Google Play, Abschnitt 4):</p>
 <ul>
   <li>Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (EWR)</li>
   <li>Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA</li>
 </ul>
-<p>Bei der Abwicklung der Käufe und beim Ausliefern der Werbung ist Google <strong>eigenständig Verantwortlicher</strong> und nicht mein Auftragsverarbeiter. Was Google dabei tut, steht in Googles eigenen Unterlagen:</p>
+<p>Google ist für die Werbung <strong>kein Auftragsverarbeiter</strong> von mir. Für die <strong>Erhebung</strong> der Daten über das in die App eingebundene SDK und ihre <strong>Übermittlung</strong> an Google sind Google und ich nach der Rechtsprechung des Europäischen Gerichtshofs (Urteil vom 29.07.2019, C-40/17, „Fashion ID") <strong>gemeinsam verantwortlich</strong>; Google regelt das in seinen Bedingungen für Verantwortliche (<a href="https://business.safety.google/controllerterms/">business.safety.google/controllerterms</a>). Was Google <strong>danach</strong> mit den Daten tut — Anzeigen auswählen, ausliefern, messen —, verantwortet Google als <strong>eigenständig Verantwortlicher</strong>. Nach Googles Angaben kann Google eine Anzeigenanfrage in seiner Auktion an von Google zugelassene Werbepartner geben; wo eine Einwilligung abgefragt wird, nennt das Formular diese Anbieter einzeln, und ohne Ihre Zustimmung geht dort nichts an sie. Was Google dabei tut, steht in Googles eigenen Unterlagen:</p>
 <ul>
   <li><a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
   <li><a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a></li>
 </ul>
 
 <h2>4. In-App-Käufe</h2>
-<p>Es gibt genau <strong>ein</strong> Produkt: „Werbefrei", 1,99 €, <strong>nicht verbrauchbar</strong>, abgewickelt über Google Play Billing, in der App eingebunden über das Unity-Paket <code>com.unity.purchasing 5.4.2</code> und die Google Play Billing Library.</p>
-<p>Die App sieht <strong>keine</strong> Zahlungsdaten — keine Kartennummer, keine Rechnungsadresse, keinen Namen. Von Google Play bekommt die App nur: die Produktkennung, das Bestell- beziehungsweise Kauftoken, den Kaufstatus und den Zeitpunkt.</p>
-<p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Erfüllung des Vertrags über den Kauf).</p>
-<p>Weil das Produkt nicht verbrauchbar ist, ist es <strong>wiederherstellbar</strong>: Ein früherer Kauf kommt über „Käufe wiederherstellen" oder von selbst beim nächsten Start zurück.</p>
-<p><em>Stand dieser Fassung:</em> Der Kaufweg ist im ausgelieferten Paket derzeit <strong>nicht</strong> enthalten; die Berechtigung <code>com.android.vending.BILLING</code> fehlt im Manifest, und im Spiel gibt es kein Kaufangebot. Dieser Abschnitt gilt, sobald der Kaufweg ausgeliefert wird.</p>
+<p><strong>Der Kaufweg ist ab Version 1.1 der App enthalten</strong>, der ersten Version, die bei Google Play erscheint. Dieser Abschnitt beschreibt ihn.</p>
+<p>Es gibt genau <strong>ein</strong> Produkt: „Werbefrei", 0,99 € (Preis in Deutschland; in anderen Ländern rechnet Google Play ihn um), <strong>nicht verbrauchbar</strong>, einmalig gekauft und ohne Abo. Abgewickelt wird der Kauf über Google Play mit der <strong>Google Play Billing Library</strong>; in der App eingebunden ist sie über die Programmbibliothek <strong>Unity In-App Purchasing</strong> (Abschnitt 4.5). Der Kauf ist freiwillig; Level und Tagesbretter gibt es ohne ihn (Abschnitt 9).</p>
+<h3>4.1 Was Google Play verarbeitet</h3>
+<p>Beim Kauf öffnet die App das Bezahlfenster von Google Play. Dort verarbeitet <strong>Google</strong> Ihr Google-Konto, Ihr Zahlungsmittel, die Zahlung, die Bestellung samt Beleg und eine mögliche Erstattung. Google ist dabei <strong>eigenständig Verantwortlicher</strong> (Anschriften und Unterlagen in Abschnitt 3). Ich habe darauf keinen Zugriff. Fragen zu Zahlung, Rechnung und Erstattung richten Sie an Google Play.</p>
+<h3>4.2 Was die App bekommt und was sie speichert</h3>
+<p>Die App sieht <strong>keine</strong> Zahlungsdaten — keine Kartennummer, keine Rechnungsadresse, keinen Namen. Von Google Play bekommt sie nur: die Produktangaben (Kennung, Name, Preis), das Bestell- beziehungsweise Kauftoken samt Googles Kaufbeleg, den Kaufstatus und den Zeitpunkt. Die App prüft den Beleg auf Ihrem Gerät und meldet Google Play zurück, dass der Kauf angekommen ist (die Bestätigung des Kaufs). <strong>Freigeschaltet wird „Werbefrei" erst, wenn Google Play diese Bestätigung angenommen hat.</strong> Manche Zahlungsarten brauchen länger; die App zeigt dann, dass der Kauf noch geprüft wird. Bleibt die Bestätigung aus, sagt die App das, und Google erstattet eine nicht bestätigte Zahlung nach seinen Regeln. Googles Kaufbeleg und das Kauftoken werden <strong>nicht</strong> an mich gesendet, und der Code des Spiels gibt sie an niemanden weiter (zur eingebundenen Programmbibliothek für Käufe siehe 4.5). Gespeichert wird nur das Kaufbit (Abschnitt 2), nicht der Beleg und nicht das Kauftoken. <strong>Selbst speichert die App über Käufe nur dieses Kaufbit auf Ihrem Gerät.</strong> Den Kaufvorgang selbst — Abfrage des Produkts, Kauf, Bestätigung und Abgleich früherer Käufe — verarbeitet die Google Play Billing Library von Google in der App; sie protokolliert dabei ihre Aufrufe samt Erfolg oder Fehler und sendet diese Protokolle an Google (4.3). Ob darin auch Angaben zu einzelnen Kaufvorgängen stehen, kann ich nicht einsehen. Im Formular „Datensicherheit" bei Google Play gebe ich deshalb vorsichtshalber an, dass Angaben zum Kaufverlauf erhoben und an Google übermittelt werden.</p>
+<h3>4.3 Abgleich beim Start und Wiederherstellen</h3>
+<p>Weil das Produkt nicht verbrauchbar ist, ist es <strong>wiederherstellbar</strong>: Ein früherer Kauf kommt über „Käufe wiederherstellen" in den Einstellungen oder von selbst zurück. Dafür fragt die App bei <strong>jedem Start</strong> bei Google Play nach dem Produkt und nach den Käufen des Google-Kontos auf diesem Gerät, auch wenn Sie nichts kaufen und die Werbung ablehnen; das Kaufpaket kann diese Abfrage wiederholen, wenn Sie in die App zurückkehren. Auf diesem Weg holt die App auch einen Kauf nach, dessen Bestätigung beim ersten Mal nicht geklappt hat. Diese Abfrage geht an Google Play, nicht an mich. Die <strong>Google Play Billing Library</strong>, über die die App mit Google Play spricht, sendet außerdem bei jedem Start eigene Protokolle an Google: Erfolg oder Fehler ihrer Aufrufe und Verbindungsprobleme, dazu Geräteangaben wie Hersteller, Modell, Systemfassung, Sprache, Land und Mobilfunknetz sowie die Fassung der App. Google verwendet sie nach eigenen Angaben, um die Bibliothek zu verbessern und bei Fehlern besser helfen zu können. Das geschieht auch ohne Kauf und ohne Einwilligung in die Werbung; auch diese Protokolle erreichen mich nicht. Das Deinstallieren löscht nur das Kaufbit auf dem Gerät; der Kauf selbst liegt bei Google.</p>
+<h3>4.4 Rechtsgrundlage</h3>
+<p>Art. 6 Abs. 1 lit. b DSGVO (Erfüllung des Vertrags über den Kauf) für Kauf, Bestätigung und Wiederherstellen. Für den Abgleich beim Start, den die App auch ohne Kauf ausführt (4.3), mein berechtigtes Interesse, einen bezahlten Kauf ohne Ihr Zutun bereitzustellen, auch nach einer Neuinstallation (Art. 6 Abs. 1 lit. f DSGVO). § 25 Abs. 2 Nr. 2 TDDDG für das Speichern des Kaufbits und den Zugriff auf Google Play auf Ihrem Gerät. Unbedingt erforderlich ist dieser Zugriff auch, wenn Sie nichts gekauft haben: Ob mit Ihrem Google-Konto schon ein Kauf „Werbefrei" besteht, etwa aus einer früheren Installation oder von einem anderen Gerät, kann die App nur durch diese Abfrage erfahren, und ohne sie bekäme ein Käufer nach einer Neuinstallation zunächst wieder Werbung. Die Verarbeitung bei Google Play verantwortet Google (Abschnitt 3). Für die Protokolle der Google Play Billing Library (4.3) stütze ich mich <strong>nach meiner Einschätzung</strong> auf mein berechtigtes Interesse, Käufe über die von Google dafür vorgesehene Bibliothek zuverlässig anzubieten (Art. 6 Abs. 1 lit. f DSGVO), und für den Zugriff auf Ihr Gerät auf § 25 Abs. 2 Nr. 2 TDDDG, weil Kauf und Abgleich nur über diese Bibliothek möglich sind und sich ihre Protokolle in der App nicht abschalten lassen. Was Google mit den Protokollen danach tut, verantwortet Google.</p>
+<h3>4.5 Die Programmbibliothek für Käufe</h3>
+<p>Die App bindet die Google Play Billing Library über die Programmbibliothek <strong>Unity In-App Purchasing</strong> (<code>com.unity.purchasing</code>, Fassung 5.3.1, mit dem Paket <code>com.unity.services.core</code>, Fassung 1.14.0) von Unity ein. Die Bibliothek läuft auf Ihrem Gerät und vermittelt dort zwischen der App und Google Play. Die App legt dafür kein Unity-Konto an, meldet sich bei Unity nicht an und nutzt keine Unity-Analyse. <strong>Unity erhält aus dieser App keine Daten.</strong> Das habe ich auf zwei Wegen geprüft. Erstens den Quelltext beider Pakete: In der Bauart dieser App enthält er keinen Weg, auf dem Daten an Unity gehen, auch nicht Googles Kaufbeleg, das Kauftoken oder eine Gerätekennung. Zweitens den Netzverkehr: Ich habe das für Google Play gebaute Paket der Version 1.1 jeweils über zwölf Minuten laufen lassen, dabei gespielt und mitgeschnitten, wohin die App Verbindungen aufbaut, einmal ohne und einmal mit Einwilligung in die Werbung, jeweils mit einem zweiten Start und mit den Einstellungen samt Kaufzeile. Eine Verbindung zu einem Server von Unity gab es dabei nicht. Bei dieser Messung war kein Google-Konto angemeldet, die Verbindung zu Google Play kam deshalb nicht zustande; für alles, was die Bibliothek bei bestehender Verbindung tut — die Abfrage beim Start und den Kauf —, stützt sich die Aussage allein auf die Durchsicht des Quelltexts. Unitys allgemeine Angaben zu Googles Formular „Datensicherheit" für Fassungen vor 5.4 nennen Diagnosedaten und sonstige Leistungsdaten der App; nach diesen beiden Prüfungen gehen solche Daten aus dieser App nicht an Unity. Sollte sich das mit einer späteren Fassung ändern, ergänze ich diese Erklärung vorher.</p>
 
 <h2>5. Werbung</h2>
-<h3>5.1 Die vier Werbeplätze, einzeln</h3>
+<h3>5.1 Die fünf Werbeplätze, einzeln</h3>
 <ul>
-  <li><strong>Zwischenwerbung</strong> zwischen Leveln: frühestens nach Level 6, höchstens jedes 4. Level, höchstens 8 am Tag, jeweils mit 3 Sekunden Vorwarnung. Nie mitten in einem Level.</li>
-  <li><strong>Werbebanner</strong> in einem eigenen Streifen am unteren Bildschirmrand: frühestens ab Level 6, nur auf der Inselkarte, auf der Ergebniskarte und während eine Kettenreaktion läuft. Nie, solange Sie ins Feld tippen sollen, nie im Tagesbrett, nie über dem Spielfeld. Nur Text- und Bildanzeigen, keine Videos.</li>
+  <li><strong>Zwischenwerbung</strong> (eine Vollbild-Anzeige): ab Level 6, nur bei Leveln der Inselkarte, nie im Tagesbrett. Sie kommt nur zu zwei Anlässen: nach einem <em>geschafften</em> Level, und wenn Sie ein Level zur Karte hin verlassen, nachdem Sie darin mindestens 3 Fehlversuche hatten. Zwischen zwei Zwischenwerbungen liegen mindestens 5 Minuten. Als reine Sicherung gegen Fehler gilt eine Obergrenze von 60 Zwischenwerbungen am Tag, die im normalen Spiel nicht erreicht wird. Jeweils mit 3 Sekunden Vorwarnung. Nie mitten in einem Level, nie bei „Nochmal" und nie zwischen zwei Versuchen.</li>
+  <li><strong>Werbebanner</strong> in einem eigenen Streifen am unteren Bildschirmrand: ab Level 6 (auf der Karte, sobald Level 6 geschafft ist) dauerhaft, solange Sie ein Level der Inselkarte spielen oder die Karte ansehen — das gilt auch, während Sie ins Feld tippen. Er liegt in seinem Streifen unter dem Spielfeld, nie über dem Spielfeld und nie über einer Tippfläche. Nie im Tagesbrett, und nicht während der Vorwarnung, einer Zwischenwerbung oder eines Videos, in den Einstellungen und bei der Einwilligung.</li>
   <li><strong>Belohnungsvideo „Zweiter Funke"</strong>: freiwillig, nur wenn Sie es antippen.</li>
   <li><strong>Belohnungsvideo „Zielhilfe"</strong>: freiwillig, nur wenn Sie es antippen.</li>
+  <li><strong>Belohnungsvideo „Glühbirne"</strong> (Tipp per Video): freiwillig, ab Level 4. Das Video startet nur, wenn Sie die Glühbirne oben rechts antippen und im Fenster „Video ansehen" bestätigen. Nach 8 Fehlversuchen in Folge in einem Level weist das Spiel einmal pro Level mit einer kurzen Einblendung auf die Glühbirne hin; ein Video startet dadurch nie von allein.</li>
 </ul>
 <h3>5.2 Das SDK</h3>
-<p>Die Werbung liefert das <strong>Google Mobile Ads SDK</strong> (AdMob), eingebunden als <code>com.google.ads.mobile 11.5.0</code>. Die Einwilligungsabfrage stellt die <strong>Google User Messaging Platform</strong> (UMP), die Teil desselben Pakets ist.</p>
+<p>Die Werbung liefert das <strong>Google Mobile Ads SDK</strong> (AdMob), eingebunden als <code>com.google.ads.mobile 11.5.0</code> (darin das Android-SDK <code>play-services-ads</code> 25.4.0). Die Einwilligungsabfrage stellt die <strong>Google User Messaging Platform</strong> (UMP, Fassung 4.0.0), die Teil desselben Pakets ist.</p>
 <h3>5.3 Was Google beim Ausliefern verarbeitet</h3>
 <ul>
   <li>die <strong>Werbe-ID</strong> Ihres Geräts (Advertising ID)</li>
+  <li>die <strong>App-Set-ID</strong>: eine Kennung, die die Google-Play-Dienste auf Ihrem Gerät für die Apps eines Entwicklers vergeben; Google nennt sie in seiner Offenlegung für das Werbe-SDK neben der Werbe-ID. Sie lässt sich in den Android-Einstellungen nicht zurücksetzen, und das Löschen der Werbe-ID berührt sie nicht.</li>
   <li>Ihre IP-Adresse (gekürzt oder ungekürzt, nach Googles Angaben)</li>
   <li>Geräte- und App-Angaben (Modell, Betriebssystemfassung, Sprache, App-Fassung)</li>
   <li>einen ungefähren Standort, den Google aus der IP-Adresse schätzt — das ist <em>keine</em> Standortberechtigung; das Spiel liest Ihren Standort nie</li>
   <li>Ihre Interaktion mit der Anzeige (gesehen, angetippt, abgebrochen)</li>
+  <li><strong>die Messung des Werbe-SDK selbst</strong>, sobald die Werbung gestartet ist: App-Starts, Antippen und Videoaufrufe sowie Diagnosedaten zur Leistung von App und SDK (etwa Startzeit, Hängerate, Energieverbrauch). Google misst damit, wie die Werbung ankommt, und verwendet die Daten nach eigenen Angaben für Werbung, Analyse und Betrugsvermeidung.</li>
 </ul>
-<h3>5.4 Einwilligung zuerst</h3>
-<p>Ohne Ihre Einwilligung wird <code>MobileAds.Initialize</code> nie gerufen, es geht kein Request hinaus, und das Spiel ist <strong>vollständig spielbar</strong>. Ein Nein sperrt nichts.</p>
+<p><strong>Wann diese Messung beginnt:</strong> nicht beim Öffnen der App. Die App setzt dafür in ihrem Manifest den Eintrag <code>com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT</code> auf <code>true</code>; das Werbe-SDK beginnt dann erst zu messen, wenn die App die Werbung startet (<code>MobileAds.Initialize</code>, 5.4). Wo eine Einwilligung vorgeschrieben ist und Sie sie nicht erteilen, startet die Werbung nie und damit auch diese Messung nicht.</p>
+<h3>5.4 Einwilligung zuerst, wo sie vorgeschrieben ist</h3>
+<p>Bis dahin ruft die App weder Werbung noch die Einwilligungsabfrage auf. <strong>Nach dem Abschluss von Level 3</strong> zeigt die App einmal je Spielstand, in jeder Region, einen Hinweisbildschirm zur Werbung mit dem Knopf „Weiter"; er ist keine Einwilligung. Mit diesem Bildschirm fragt die App bei Googles Einwilligungsabfrage (UMP), ob in Ihrer Region eine Einwilligung nötig ist. Das entscheidet Google nach Ihrem Standort; es betrifft nach Googles Angaben den Europäischen Wirtschaftsraum, das Vereinigte Königreich und die Schweiz. Danach fragt die App bei jedem Start erneut nach, ob sich daran etwas geändert hat (ab Version 1.1 nicht mehr nach dem Kauf „Werbefrei", 5.9).</p>
+<p><strong>Die Einwilligungsabfrage selbst</strong> überträgt in jeder Region, auch dort, wo danach kein Formular kommt, Ihre IP-Adresse sowie Geräte- und App-Angaben (etwa Sprache und App-Kennung) an Google, und das UMP-SDK legt seine Antwort auf Ihrem Gerät ab (Abschnitt 2). Rechtsgrundlage: Wo eine Einwilligung vorgeschrieben ist, muss ich sie einholen und nachweisen können (Art. 6 Abs. 1 lit. c in Verbindung mit Art. 7 Abs. 1 DSGVO); im Übrigen mein berechtigtes Interesse, Werbung nur dort ohne Einwilligung zu starten, wo das erlaubt ist (Art. 6 Abs. 1 lit. f DSGVO). Für den Zugriff auf Ihr Gerät, den diese Abfrage braucht, gilt § 25 Abs. 2 Nr. 2 TDDDG.</p>
+<p><strong>Wo eine Einwilligung vorgeschrieben ist,</strong> zeigt Google ein Formular. Die App startet die Werbung nur, wenn Sie darin dem Zweck „Informationen auf einem Gerät speichern und/oder abrufen" zugestimmt haben (Zweck 1 des europäischen TCF-Standards). Ohne Ihre Einwilligung wird <code>MobileAds.Initialize</code> nie gerufen, es geht keine Anfrage an die Werbung hinaus, die Messung des Werbe-SDK (5.3) startet nicht, und das Spiel bleibt spielbar: Ein Nein sperrt keine Level und kein Tagesbrett. Die drei Hilfen mit Belohnungsvideo werden dann nicht angeboten (Abschnitt 9). Kann die App Ihre Antwort nicht lesen, zeigt sie lieber keine Werbung.</p>
+<p><strong>In allen anderen Regionen</strong> zeigt die App keine Einwilligungsabfrage und kein Formular: Die Werbung startet dort, sobald Googles Prüfung ergeben hat, dass Anzeigen angefragt werden dürfen. Das ist ausdrücklich keine Einwilligung durch Sie. Soweit die DSGVO auch dort gilt, stütze ich die Werbung auf mein berechtigtes Interesse, das Spiel ohne Entgelt durch Werbung zu finanzieren (Art. 6 Abs. 1 lit. f DSGVO); Sie können dem jederzeit widersprechen (Kasten „Widerspruchsrecht" in Abschnitt 11). Die Werbe-ID können Sie in den Android-Einstellungen zurücksetzen oder löschen (Abschnitt 10). Zum Alter siehe Abschnitt 13.</p>
 <h3>5.5 Widerruf</h3>
-<p>Sie widerrufen jederzeit über <strong>Einstellungen → Datenschutz → „Einwilligung ändern"</strong> (Art. 7 Abs. 3 S. 4 DSGVO: der Widerruf muss so einfach sein wie die Erteilung). Danach werden bereits geladene Anzeigen verworfen, und es wird nichts Neues angefragt.</p>
+<p>Wo eine Einwilligung abgefragt wird, widerrufen Sie jederzeit über <strong>Einstellungen → Datenschutz → „Einwilligung ändern"</strong> (Art. 7 Abs. 3 S. 4 DSGVO: der Widerruf muss so einfach sein wie die Erteilung). Danach werden bereits geladene Anzeigen verworfen, ein liegender Banner wird entfernt, und es wird nichts Neues angefragt.</p>
 <h3>5.6 Profilbildung</h3>
-<p>Ob Google personalisiert ausliefert, hängt allein an Ihrer Einwilligung. Lehnen Sie ab, wird überhaupt keine Anzeige angefragt.</p>
+<p>Wo eine Einwilligung vorgeschrieben ist, hängt es allein an ihr, ob Google personalisiert ausliefert. Lehnen Sie dort ab, wird überhaupt keine Anzeige angefragt. Wo keine Einwilligung vorgeschrieben ist, richtet sich die Auslieferung nach Googles Regeln für diese Region; darauf habe ich keinen Einfluss.</p>
+<p><strong>Automatisierte Entscheidung:</strong> Ich treffe keine automatisierte Entscheidung im Sinne von Art. 22 DSGVO, auch kein Profiling mit rechtlicher Wirkung für Sie. Google wählt die Anzeigen automatisiert aus; nach meiner Kenntnis hat das für Sie keine rechtliche Wirkung und beeinträchtigt Sie nicht in ähnlich erheblicher Weise.</p>
 <h3>5.7 Obergrenze der Werbeinhalte</h3>
 <p>Die Obergrenze steht auf <strong>G</strong> — für alle Altersgruppen geeignet.</p>
 <h3>5.8 Übermittlung in die USA</h3>
 <p>Google LLC sitzt in den USA. Grundlage der Übermittlung ist das EU-US Data Privacy Framework, für das die Europäische Kommission am <strong>10.07.2023</strong> einen Angemessenheitsbeschluss erlassen hat; Google LLC ist dort zertifiziert.</p>
 <h3>5.9 Was der Kauf ändert</h3>
-<p><strong>Der Kauf „Werbefrei" beendet die Zwischenwerbung und den Werbebanner dauerhaft; danach wird für beide kein Request mehr gestellt.</strong> Die beiden Belohnungsvideos bleiben freiwillig und werden dann ohne Video gutgeschrieben.</p>
-
+<p><strong>Der Kauf „Werbefrei" (ab Version 1.1, Abschnitt 4) beendet die Zwischenwerbung und den Werbebanner dauerhaft; danach wird für beide keine Anzeige mehr angefragt.</strong> Die drei Hilfen mit Belohnungsvideo (Zweiter Funke, Zielhilfe, Glühbirne) stehen dann ohne Video zur Verfügung. Ab dem nächsten Start nach dem Kauf ruft die App weder die Einwilligungsabfrage (5.4) noch das Werbe-SDK auf: Es geht dann weder die Anfrage der Einwilligungsabfrage an Google, noch startet die Werbung, und damit entfällt auch die Messung des Werbe-SDK (5.3). Wer „Werbefrei" nicht gekauft hat, für den gilt Abschnitt 5 unverändert.</p>
 <h2>6. Statistik (Nutzungsanalyse)</h2>
-<p><em>Stand dieser Fassung:</em> Das Analyse-SDK ist im ausgelieferten Paket derzeit <strong>nicht</strong> enthalten. Dieser Abschnitt gilt, sobald es ausgeliefert wird; der Schalter dafür ist im Spiel bereits vorhanden und steht ab Werk auf „an", wirkt aber erst nach Ihrer Einwilligung.</p>
-<h3>6.1 Wozu</h3>
-<p>Um zu sehen, welches Level zu schwer ist und welche Hilfe benutzt wird. Nichts davon dient der Werbung. Erfasst werden nur Ereignisse des Spiels: Start der Sitzung, ein knapp verfehltes Ziel, ein „Nochmal", ein beendeter Versuch (mit Levelnummer und übrigen Punkten), ein geschafftes Level (mit Sternen und Versuchen), ein Tagesbrett, gesehene Belohnungsvideos, gezeigte Zwischenwerbungen, der Kauf „Werbefrei" und die erteilte Einwilligung selbst.</p>
-<h3>6.2 Das SDK</h3>
-<p>Die Statistik läuft über <strong>Google Analytics for Firebase</strong>. Google verarbeitet die Daten dabei <strong>in meinem Auftrag</strong> (Auftragsverarbeitung) und nicht als eigener Verantwortlicher — anders als bei der Werbung in Abschnitt 5.</p>
-<h3>6.3 Was verarbeitet wird</h3>
-<ul>
-  <li>eine von Firebase erzeugte <strong>App-Instanz-Kennung</strong> (keine Werbe-ID, kein Konto, kein Name)</li>
-  <li>Geräte- und App-Angaben (Modell, Betriebssystemfassung, Sprache, App-Fassung)</li>
-  <li>die in 6.1 genannten Ereignisse mit ihren Zahlen</li>
-</ul>
-<p>Es gibt keinen Namen, keine E-Mail-Adresse und keine Verbindung zu einem Konto. Ihr Spielstand selbst wird <strong>nicht</strong> übertragen.</p>
-<h3>6.4 Rechtsgrundlage, und die Reihenfolge</h3>
-<p><strong>§ 25 Abs. 1 TDDDG</strong> für den Zugriff auf Ihr Endgerät (die App-Instanz-Kennung) und <strong>Art. 6 Abs. 1 lit. a DSGVO</strong> für die Verarbeitung danach. Vor Ihrer Einwilligung wird nichts erfasst und nichts gesendet: die Erfassung im SDK ist ausdrücklich abgeschaltet und wird erst durch Ihre Antwort freigegeben.</p>
-<h3>6.5 Widerruf und Abschalten</h3>
-<p>Zwei Wege, beide wirken sofort: <strong>Einstellungen → „Statistik senden"</strong> schaltet die Statistik aus, und <strong>Einstellungen → Datenschutz → „Einwilligung ändern"</strong> widerruft die Einwilligung (Art. 7 Abs. 3 S. 4 DSGVO).</p>
-<h3>6.6 Empfänger und Übermittlung</h3>
-<p>Empfänger ist Google (Anschriften in Abschnitt 3). Für die Übermittlung in die USA gilt dasselbe wie in 5.8: EU-US Data Privacy Framework, Angemessenheitsbeschluss vom 10.07.2023.</p>
+<p>Die App enthält in keiner Version <strong>ein eigenes Analyse-SDK</strong> (weder Google Analytics for Firebase noch ein anderes), und ich erhalte <strong>keine Nutzungsstatistik</strong>. Was Sie im Spiel tun — Level, Versuche, Sterne —, bleibt auf Ihrem Gerät (Abschnitt 2). Davon zu unterscheiden ist die Messung, die das Google Mobile Ads SDK nach dem Start der Werbung für Google vornimmt (App-Starts, Antippen, Videoaufrufe, Diagnosedaten; 5.3): Sie gehört zur Werbung und geht an Google, nicht an mich.</p>
 <h2>7. Berechtigungen der App</h2>
-<p>Das ausgelieferte Paket führt die folgenden Berechtigungen. Vier gehören dem Spiel selbst, sechs bringt das Werbe-SDK mit, und eine steht nur dann darin, wenn der Kaufweg mit ausgeliefert wird.</p>
+<p>Das ausgelieferte Paket führt die folgenden Berechtigungen. Vier gehören dem Spiel selbst, sechs bringt das Werbe-SDK mit, und eine (<code>com.android.vending.BILLING</code>) gehört zum Kaufweg (Abschnitt 4).</p>
 <div class="tabelle">
 <table>
 <thead><tr><th>Berechtigung</th><th>Wofür</th></tr></thead>
@@ -173,7 +178,7 @@
 <tr><td><code>android.permission.FOREGROUND_SERVICE</code></td><td>von der Hilfsbibliothek <code>androidx.work</code> mitgebracht, die das Werbe-SDK einbindet. <strong>Eigener Code startet keinen Vordergrunddienst.</strong></td></tr>
 <tr><td><code>android.permission.WAKE_LOCK</code></td><td>von <code>play-services-measurement-sdk-api</code> mitgebracht, das das Werbe-SDK einbindet. <strong>Eigener Code verwendet keinen WakeLock.</strong> Dass der Bildschirm während des Spielens anbleibt, macht die App über ihr Fenster und nicht über diese Berechtigung.</td></tr>
 <tr><td><code>com.northloopgames.oneleft.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code></td><td>rein app-interne Schutzkennung auf Signaturebene, von der Hilfsbibliothek <code>androidx.core</code> mitgebracht. Sie gibt keinen Zugriff auf Ihr Gerät und ist für andere Apps unerreichbar.</td></tr>
-<tr><td><code>com.android.vending.BILLING</code></td><td><strong>nur wenn der Kaufweg im ausgelieferten Paket ist</strong> (Abschnitt 4): Abwicklung des Kaufs über Google Play. Im derzeit ausgelieferten Paket fehlt diese Berechtigung.</td></tr>
+<tr><td><code>com.android.vending.BILLING</code></td><td>Abwicklung des Kaufs „Werbefrei" über Google Play (Abschnitt 4)</td></tr>
 </tbody>
 </table>
 </div>
@@ -186,24 +191,33 @@
   <li>keine Bestenliste, kein Chat, kein Teilen von Inhalten</li>
   <li>kein Standortzugriff, keine Kontakte, keine Kamera, kein Mikrofon</li>
   <li>keine Benachrichtigungen</li>
-  <li>kein Crashlytics, kein Unity Analytics, kein Adjust, kein AppsFlyer — die Nutzungsanalyse läuft allein über Google Analytics for Firebase und nur mit Ihrer Einwilligung (Abschnitt 6)</li>
-  <li>keine Weitergabe an Dritte außer an Google in dem oben beschriebenen Umfang</li>
+  <li>keine eigene Nutzungsstatistik: kein Google Analytics for Firebase, kein Crashlytics, kein Unity Analytics, kein Adjust, kein AppsFlyer (Abschnitt 6); die Messung des Werbe-SDK (5.3) geht an Google, nicht an mich</li>
+  <li>keine Zahlungsdaten: Google Play wickelt den Kauf ab, und die App sieht keine Zahlungsdaten (Abschnitt 4)</li>
+  <li>keine Weitergabe an Dritte außer an Google und, über Googles Auktion, an die von Google zugelassenen Werbepartner in dem in Abschnitt 3 beschriebenen Umfang; zur Programmbibliothek für Käufe ab Version 1.1 siehe 4.5</li>
 </ul>
 
 <h2>9. Müssen Sie Daten bereitstellen?</h2>
-<p><strong>Nein.</strong> Ohne Einwilligung und ohne Kauf ist das Spiel vollständig spielbar: alle 120 Level und jedes Tagesbrett sind ohne Geld und ohne Werbung erreichbar. „Nochmal" ist immer sofort und kostenlos.</p>
+<p><strong>Nein</strong> — weder gesetzlich noch vertraglich. Alle Level und jedes Tagesbrett sind ohne Geld erreichbar, auch wenn Sie keine Einwilligung zur Werbung erteilen. <strong>Außerhalb</strong> des EWR, des Vereinigten Königreichs und der Schweiz ist die Werbung aber Teil der App: Dort startet sie ohne Abfrage, und wer sie nicht will, kann widersprechen (Abschnitt 11) oder die App nicht nutzen. „Nochmal" ist immer sofort und kostenlos. <strong>Eine Ausnahme sind die drei Hilfen</strong> (Zweiter Funke, Zielhilfe, Glühbirne): Sie gibt es über ein freiwilliges Belohnungsvideo oder, ab Version 1.1, mit dem Kauf „Werbefrei". Wo eine Einwilligung vorgeschrieben ist (5.4) und Sie sie nicht erteilen, wird keine Werbung angefragt; die drei Hilfen gibt es dann nur mit „Werbefrei", sonst spielen Sie ohne sie. Der Kauf „Werbefrei" ist freiwillig und schaltet keine Level frei.</p>
 
 <h2>10. Löschen</h2>
 <ul>
-  <li><strong>Deinstallieren</strong> löscht alle lokalen Daten der App.</li>
-  <li>Die <strong>Werbe-ID</strong> lässt sich in den Android-Einstellungen unter „Datenschutz → Werbung" zurücksetzen oder löschen.</li>
+  <li><strong>Deinstallieren</strong> löscht alle Daten der App auf dem Gerät. Androids Sicherung bleibt bestehen und spielt den Spielstand bei einer Neuinstallation zurück, bis Sie sie entfernen (nächster Punkt).</li>
+  <li>Die <strong>Werbe-ID</strong> lässt sich in den Android-Einstellungen unter „Datenschutz → Werbung" zurücksetzen oder löschen. Die App-Set-ID (5.3) lässt sich dort nicht löschen.</li>
+  <li>Ein <strong>Kauf</strong> (ab Version 1.1) liegt bei Google Play und bleibt nach dem Deinstallieren erhalten; er lässt sich wiederherstellen (4.3). Auskunft und Löschung zu Kaufdaten gibt es bei Google (Abschnitt 11).</li>
   <li>Androids <strong>Auto Backup</strong> lässt sich unter „Google → Sicherung" entfernen.</li>
   <li>Ein Konto, das gelöscht werden könnte, gibt es nicht — es existiert keines.</li>
 </ul>
 
 <h2>11. Ihre Rechte</h2>
 <p>Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20), Widerspruch (Art. 21) und Widerruf einer Einwilligung (Art. 7 Abs. 3).</p>
-<p>Für die Daten, die bei <strong>Google</strong> anfallen, ist Google die auskunftspflichtige Stelle: Ich habe keinen Zugriff darauf und kann sie weder herausgeben noch löschen. Wenden Sie sich dafür an Google über die in Abschnitt 3 genannten Seiten.</p>
+<div class="kasten">
+<h3>Widerspruchsrecht (Art. 21 DSGVO)</h3>
+<p>Soweit ich die Werbung auf mein berechtigtes Interesse stütze (Art. 6 Abs. 1 lit. f DSGVO, also <strong>außerhalb</strong> des EWR, des Vereinigten Königreichs und der Schweiz, 5.4), können Sie dem <strong>jederzeit</strong> widersprechen, aus Gründen, die sich aus Ihrer besonderen Situation ergeben; gegen Werbung als Direktwerbung auch ohne Gründe. Dasselbe gilt für die Einwilligungsabfrage, soweit sie auf lit. f beruht, und ab Version 1.1 für den Abgleich der Käufe beim Start (4.4).</p>
+<p><strong>So geht es:</strong> eine formlose E-Mail an <a href="mailto:support.northloopsgame@gmail.com">support.northloopsgame@gmail.com</a>. Einen Schalter dafür gibt es in der App nicht. <strong>Sofort selbst wirksam</strong> sind zwei Wege: die Werbe-ID in den Android-Einstellungen löschen („Datenschutz → Werbung"; dann geht sie nicht mehr mit, die App-Set-ID aus 5.3 aber weiter) oder die App deinstallieren (dann geht nichts mehr an Google).</p>
+<p><strong>Was danach geschieht:</strong> Weil die App kein Konto und keine Kennung von Ihnen kennt, kann ich die Werbung auf Ihrem Gerät nicht aus der Ferne abschalten. Ich antworte Ihnen und nenne die beiden Wege oben; einen weiteren Weg ohne Kosten gibt es nicht. Der Kauf „Werbefrei" (ab Version 1.1, 5.9) beendet die Werbung zwar ebenfalls, ist aber ein bezahlter Kauf und kein Weg, Ihr Widerspruchsrecht auszuüben: Niemand muss etwas kaufen, um zu widersprechen.</p>
+<p><strong>Der Abgleich der Käufe beim Start</strong> (ab Version 1.1, 4.3 und 4.4) läuft zwischen der App und Google Play, dazu kommen die Protokolle der Google Play Billing Library an Google (4.3); mich erreicht dabei nichts, und einen Schalter, der das abstellt, gibt es in der App nicht. Auf Ihren Widerspruch hin prüfe ich, ob Gründe für den Abgleich und diese Protokolle Ihre Interessen überwiegen, und antworte Ihnen. Sofort selbst wirksam ist nur das Deinstallieren der App.</p>
+</div>
+<p>Für die Daten, die bei <strong>Google</strong> anfallen, auch für Käufe über Google Play, ist Google die auskunftspflichtige Stelle: Ich habe keinen Zugriff darauf und kann sie weder herausgeben noch löschen. Wenden Sie sich dafür an Google über die in Abschnitt 3 genannten Seiten.</p>
 
 <h2>12. Beschwerderecht</h2>
 <p>Sie können sich bei einer Datenschutz-Aufsichtsbehörde beschweren. Zuständig ist:</p>
@@ -214,10 +228,11 @@
 </ul>
 
 <h2>13. Kinder</h2>
-<p>Die Zielgruppe ist <strong>13 Jahre und älter</strong>. Das Spiel richtet sich nicht an Kinder unter 13 Jahren. Die Werbeinhalte sind auf die Obergrenze <strong>G</strong> begrenzt (siehe 5.7).</p>
+<p>Die App richtet sich an Personen ab <strong>16 Jahren</strong>; in Google Play ist die Zielgruppe auf 16+ eingestellt. Sie richtet sich nicht an Kinder und Jugendliche unter 16 Jahren. Die Werbeinhalte sind auf die Obergrenze <strong>G</strong> begrenzt (siehe 5.7).</p>
+<p><strong>Warum 16:</strong> Wo die Werbung Ihre Einwilligung braucht (5.4), ist sie die einzige Rechtsgrundlage für die Werbe-ID und die Werbung. Eine Einwilligung ist nach Art. 8 Abs. 1 DSGVO in Deutschland erst ab 16 Jahren ohne Weiteres wirksam; bei jüngeren Personen braucht sie die Zustimmung der Sorgeberechtigten (andere EU-Staaten setzen die Grenze niedriger, bis 13). Das Spiel hat keine Altersabfrage und kann das Alter nicht prüfen, und es übermittelt Google keine Altersangabe. Wenn Sie noch nicht 16 Jahre alt sind, lehnen Sie die Einwilligung bitte ab, solange Ihre Sorgeberechtigten nicht zugestimmt haben; Level und Tagesbretter bleiben dann spielbar (Abschnitt 9). Sorgeberechtigte, die glauben, dass ein Kind unter 16 Jahren Daten übermittelt hat, schreiben mir an die Adresse in Abschnitt 15.</p>
 
 <h2>14. Änderungen</h2>
-<p>Diese Fassung hat den Stand <strong>5. Oktober 2026</strong>. Änderungen werden auf dieser Seite veröffentlicht; die jeweils geltende Fassung ist die hier abrufbare.</p>
+<p>Diese Fassung hat den Stand <strong>19. Oktober 2026</strong> und gilt ab Version 1.1 der App, der ersten Version bei Google Play (mit dem Kauf „Werbefrei", Abschnitt 4). Änderungen werden auf dieser Seite veröffentlicht; die jeweils geltende Fassung ist die hier abrufbare.</p>
 
 <h2>15. Kontakt</h2>
 <p>Fragen zum Datenschutz an: <a href="mailto:support.northloopsgame@gmail.com">support.northloopsgame@gmail.com</a></p>

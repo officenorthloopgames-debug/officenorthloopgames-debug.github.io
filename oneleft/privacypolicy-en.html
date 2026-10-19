@@ -46,6 +46,10 @@
   table { border-collapse: collapse; width: 100%; font-size: .94rem; }
   th, td { text-align: left; vertical-align: top; padding: .5rem .7rem; border-bottom: 1px solid var(--rule); }
   th { font-weight: 600; }
+  .kasten {
+    border: 2px solid var(--accent); border-radius: 6px; padding: .2rem 1.1rem .4rem; margin: 1.4rem 0 1rem;
+  }
+  .kasten h3 { margin-top: 1rem; }
   footer {
     margin-top: 3.5rem; padding-top: 1.2rem; border-top: 1px solid var(--rule);
     color: var(--muted); font-size: .88rem;
@@ -56,8 +60,8 @@
 <main>
 
 <h1>Privacy Policy — One Left</h1>
-<p class="updated">Last updated: 5 October 2026 · <a href="privacypolicy.html" lang="de">Deutsche Fassung</a></p>
-<p>One Left is a puzzle game for Android. Playing it happens offline: one tap sets off a chain reaction, exactly one dot is left — and nothing about that is sent to me or to anyone else. Exactly <strong>four</strong> things go online, and all four are described separately below: the consent request, the ads themselves (the ads between levels, an ad banner at the bottom edge of the screen and the optional reward videos), purchases through Google Play, and statistics about how the game is used. This policy tells you what the app stores on your device, what is processed on those paths, who receives it, on what legal basis, and what rights you have.</p>
+<p class="updated">Last updated: 19 October 2026 · <a href="privacypolicy.html" lang="de">Deutsche Fassung</a></p>
+<p>One Left is a puzzle game for Android. Playing it happens offline: one tap sets off a chain reaction, exactly one dot is left — and nothing about that is sent to me or to anyone else. Exactly <strong>three</strong> things go online, and all three are described separately below: the consent request (Google's check whether your region requires consent) and the ads themselves (ads between levels after completed levels or when you leave a level for the map, a permanent ad banner at the bottom edge of the screen, and three optional reward videos); the ads include the measurement that Google's ad SDK itself carries out once the ads have started (5.3) — not already when you open the app; and the purchase "Remove Ads" through Google Play together with the query for earlier purchases at Google Play on every start and the logs that Google's library for purchases sends to Google along the way (section 4). For the purchase a program library from Unity is built in; it runs on your device and sends no data to Unity in this app (4.5). The app has <strong>no analytics SDK of its own</strong>: I receive no usage data. This policy tells you what the app stores on your device, what is processed on these paths, who receives it, on what legal basis, and what rights you have.</p>
 <p>App: One Left (package name <code>com.northloopgames.oneleft</code>), distributed through Google Play.</p>
 <hr>
 
@@ -73,92 +77,93 @@
 <p>No <strong>data protection officer</strong> has been appointed, because the conditions for one are not met: Art. 37 GDPR does not apply (no public authority, no large-scale regular monitoring, no large-scale processing of special categories), and § 38 of the German Federal Data Protection Act does not apply (fewer than 20 people are constantly engaged in automated processing — it is one individual).</p>
 
 <h2>2. What the app stores on your device</h2>
-<p>Everything below stays <strong>on your device only</strong>. There is no account and no server of mine.</p>
+<p>Everything below stays <strong>on your device</strong> and, if Android's backup is switched on, in the backup of your Google account (see "Retention" below). <strong>Nothing is kept by me:</strong> there is no account and no server of mine.</p>
+<p>The complete list, as the app keeps it in the saved game (field names in brackets):</p>
 <ul>
-  <li>progress and stars per level</li>
-  <li>best results and the taps needed for the replay</li>
-  <li>daily board history</li>
-  <li>counters and timestamps: attempts, near misses, retries, time anchors</li>
-  <li>settings: sound, vibration, "Send statistics" (field <code>statistik</code>)</li>
-  <li><strong>the purchase state of "Remove Ads"</strong></li>
-  <li><strong>the ad counters</strong>: <code>levelSeitInterstitial</code>, <code>interstitialsHeute</code>, <code>interstitialDatum</code>, <code>interstitialsGesamt</code>, <code>letzterWerbungZeitanker</code></li>
-  <li>the consent answer stored by the UMP SDK</li>
+  <li><strong>per level</strong> (field <code>levels</code>): stars (<code>stars</code>), best result (<code>best</code>), number of attempts (<code>attempts</code>), failed attempts in a row (<code>failStreak</code>), whether and how often a help was used (<code>helped</code>, <code>hint</code>), the taps needed for the replay of the best result and of the Second spark (<code>bT</code>, <code>bX</code>, <code>bY</code>, <code>b2T</code>, <code>b2X</code>, <code>b2Y</code>: time and position of the tap in the playing field, not a position in the world), and the state of the bulb (<code>tipp</code>): whether the hint for that level is already unlocked and whether the bulb has already offered itself there once</li>
+  <li><strong>daily board history</strong> (field <code>daily</code>): per daily board the day number (<code>day</code>), the best result (<code>best</code>), the attempts (<code>tries</code>) and the tap of the best result (<code>t</code>, <code>x</code>, <code>y</code>)</li>
+  <li><strong>the Second spark</strong> (field <code>spark</code>): state, level, tap and attempt identifier (<code>state</code>, <code>level</code>, <code>t</code>, <code>x</code>, <code>y</code>, <code>endTick</code>, <code>attemptId</code>), plus the attempt counters <code>attemptSeq</code> and <code>sparkUsedAttempt</code></li>
+  <li><strong>saved-game housekeeping</strong>: schema version (<code>v</code>), a checksum against corruption (<code>sum</code>), the time the saved game was first created (<code>createdMs</code>) and a time anchor (<code>anchorMs</code>) that rises with every save so that an older backup cannot overwrite a newer state</li>
+  <li><strong>settings</strong>: sound (<code>sound</code>), vibration (<code>vibration</code>) and the field <code>statistik</code>, a leftover without function — the app keeps no statistics, and the field controls nothing (section 6)</li>
+  <li><strong>game markers</strong>: which introduction cards have been shown (<code>hintsSeen</code>, <code>artenGesehen</code>), which island moments have been shown (<code>inselFertigWelt</code>), whether the arrival in a new world has been shown (<code>weltAnkunft</code>, from version 1.1 with the second world), whether the notice screen about ads has been shown (<code>consentShown</code>) and whether the one-time notice about "Remove Ads" has been shown (<code>werbefreiHinweisGezeigt</code>)</li>
+  <li><strong>the purchase flag</strong> (<code>werbefrei</code>): "yes" once Google Play has confirmed a purchase of "Remove Ads", otherwise "no" (section 4). Only this yes or no is stored, no receipt and no purchase token.</li>
+  <li><strong>the ad counters</strong>: <code>levelSeitInterstitial</code>, <code>interstitialsHeute</code>, <code>interstitialDatum</code> (the date on your device on which counting is done), <code>interstitialsGesamt</code>, <code>letzterWerbungZeitanker</code> (when an ad between levels was last shown, so that the minimum gap is kept)</li>
+  <li><strong>the game counters</strong> (field <code>m</code>, thirteen counters): <code>nearMiss</code> (near misses), <code>retryNochmal</code>, <code>retrySpark</code>, <code>retryHint</code> (retries after "Again", Second spark and bulb), <code>attemptsMap</code>, <code>attemptsDaily</code> (attempts on the map and in the daily board), <code>daysPlayed</code>, <code>lastDay</code> (days played), <code>hintNotConfirmed</code> (bulb not confirmed), <code>videoSpark</code>, <code>videoHint</code>, <code>videoTotal</code> (reward videos watched), <code>interstitialFehl</code> (ads between levels that did not appear). These counters stay on the device and are sent nowhere.</li>
+  <li>the consent answer stored by the UMP SDK (not in the saved game but in the private settings of the Google SDK)</li>
 </ul>
 <p>Locations: the files <code>oneleft-save.json</code> and <code>oneleft-save.bak.json</code> in the app's private folder, plus the private settings of the Google SDKs.</p>
-<p><strong>Legal basis:</strong> § 25(2) no. 2 TDDDG for the saved game (storing it is strictly necessary for the game to do what it is for); § 25(1) TDDDG together with Art. 6(1)(a) GDPR for everything the ad SDK stores.</p>
-<p><strong>Retention:</strong> as long as the app is installed. Android's Auto Backup copies these files into the user's Google account; that is a function of the operating system, not of mine. Uninstalling deletes the local data.</p>
+<p><strong>System log:</strong> For troubleshooting, the app writes short lines about the course of ads, consent and (from version 1.1) purchases to your device's system log ("logcat"), for example whether an ad between levels was shown or whether Google Play delivered the product with its price. These lines contain no account, no name, no purchase receipt, no purchase token and no transaction number. The app does not send this log anywhere.</p>
+<p><strong>Legal basis:</strong> § 25(2) no. 2 TDDDG for the saved game including the purchase flag (storing it is strictly necessary for the game to do what it is for and for a purchased state to be kept); § 25(1) TDDDG together with Art. 6(1)(a) GDPR for everything the ad SDK stores, where consent is required (section 5.4).</p>
+<p><strong>Retention:</strong> as long as the app is installed. Android's Auto Backup copies the two saved-game files into the user's Google account and restores them on a reinstall; that is a function of the operating system, which the app explicitly switches on for this. Uninstalling deletes the data on the device, not this backup (section 10).</p>
 
 <h2>3. Google as recipient</h2>
-<p>The recipients of the data described below are:</p>
+<p>The recipients of the data described below are (for the purchase from version 1.1, Google Play, section 4):</p>
 <ul>
   <li>Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland (EEA)</li>
   <li>Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA</li>
 </ul>
-<p>When handling purchases and delivering ads, Google is an <strong>independent controller</strong> and not my processor. What Google does there is set out in Google's own documents:</p>
+<p>For the ads, Google is <strong>not my processor</strong>. For the <strong>collection</strong> of the data through the SDK built into the app and its <strong>transmission</strong> to Google, Google and I are <strong>joint controllers</strong> under the case law of the Court of Justice of the EU (judgment of 29 July 2019, C-40/17, "Fashion ID"); Google covers this in its controller terms (<a href="https://business.safety.google/controllerterms/">business.safety.google/controllerterms</a>). What Google does with the data <strong>afterwards</strong> — selecting, delivering and measuring ads — is Google's responsibility as an <strong>independent controller</strong>. According to Google, Google may pass an ad request in its auction to advertising partners it has approved; where consent is requested, the form lists these providers one by one, and without your agreement nothing goes to them there. What Google does there is set out in Google's own documents:</p>
 <ul>
   <li><a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
   <li><a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a></li>
 </ul>
 
 <h2>4. In-app purchases</h2>
-<p>There is exactly <strong>one</strong> product: "Remove Ads", EUR 1.99, <strong>non-consumable</strong>, handled through Google Play Billing, built into the app through the Unity package <code>com.unity.purchasing 5.4.2</code> and the Google Play Billing Library.</p>
-<p>The app never sees <strong>any</strong> payment data — no card number, no billing address, no name. From Google Play the app only receives: the product identifier, the order or purchase token, the purchase status, and the time.</p>
-<p><strong>Legal basis:</strong> Art. 6(1)(b) GDPR (performance of the purchase contract).</p>
-<p>Because the product is non-consumable, it is <strong>restorable</strong>: an earlier purchase comes back through "Restore purchases" or by itself on the next start.</p>
-<p><em>State of this version:</em> the purchase path is currently <strong>not</strong> part of the shipped package; the permission <code>com.android.vending.BILLING</code> is absent from the manifest, and there is no purchase offer in the game. This section applies as soon as the purchase path ships.</p>
+<p><strong>The purchase path is included from version 1.1 of the app</strong>, the first version to appear on Google Play. This section describes it.</p>
+<p>There is exactly <strong>one</strong> product: "Remove Ads", €0.99 (price in Germany; in other countries Google Play converts it), <strong>non-consumable</strong>, bought once and no subscription. The purchase is handled by Google Play with the <strong>Google Play Billing Library</strong>; in the app it is built in through the program library <strong>Unity In-App Purchasing</strong> (section 4.5). The purchase is optional; levels and daily boards are available without it (section 9).</p>
+<h3>4.1 What Google Play processes</h3>
+<p>When you buy, the app opens Google Play's payment window. There <strong>Google</strong> processes your Google account, your payment method, the payment, the order with its receipt and any refund. Google acts as an <strong>independent controller</strong> (addresses and documents in section 3). I have no access to this. Please direct questions about payment, invoice and refund to Google Play.</p>
+<h3>4.2 What the app receives and what it stores</h3>
+<p>The app sees <strong>no</strong> payment data — no card number, no billing address, no name. From Google Play it receives only: the product details (identifier, name, price), the order or purchase token with Google's purchase receipt, the purchase status and the time. The app checks the receipt on your device and reports back to Google Play that the purchase has arrived (the confirmation of the purchase). <strong>"Remove Ads" is only switched on once Google Play has accepted this confirmation.</strong> Some payment methods take longer; the app then shows that the purchase is still being checked. If the confirmation does not come through, the app says so, and Google refunds an unconfirmed payment under its own rules. Google's purchase receipt and the purchase token are <strong>not</strong> sent to me, and the game's code passes them on to no one (on the program library for purchases built into the app, see 4.5). Only the purchase flag is stored (section 2), not the receipt and not the purchase token. <strong>The app itself stores nothing about purchases except this purchase flag on your device.</strong> The purchase process itself — querying the product, the purchase, its confirmation and the check of earlier purchases — is handled in the app by Google's Google Play Billing Library; it logs its calls together with their success or failure and sends these logs to Google (4.3). Whether they also contain details of individual purchases, I cannot see. In the "Data safety" form on Google Play I therefore declare, as a precaution, that purchase history data is collected and transmitted to Google.</p>
+<h3>4.3 Check on start and restoring</h3>
+<p>Because the product is non-consumable, it can be <strong>restored</strong>: an earlier purchase comes back through "Restore purchases" in the settings or by itself. For this the app asks Google Play on <strong>every start</strong> for the product and for the purchases of the Google account on this device, even if you buy nothing and decline the ads; the purchase package may repeat this query when you return to the app. This is also how the app catches up on a purchase whose confirmation did not work the first time. The query goes to Google Play, not to me. The <strong>Google Play Billing Library</strong>, through which the app talks to Google Play, also sends its own logs to Google on every start: success or failure of its calls and connection problems, together with device details such as manufacturer, model, system version, language, country and mobile network, and the version of the app. According to Google, it uses them to improve the library and to provide better support for errors. This happens even without a purchase and without consent to ads; these logs do not reach me either. Uninstalling only deletes the purchase flag on the device; the purchase itself is kept by Google.</p>
+<h3>4.4 Legal basis</h3>
+<p>Art. 6(1)(b) GDPR (performance of the contract of purchase) for the purchase, its confirmation and restoring it. For the check on start, which the app runs even without a purchase (4.3), my legitimate interest in providing a paid purchase without any action on your part, also after a reinstall (Art. 6(1)(f) GDPR). § 25(2) no. 2 TDDDG for storing the purchase flag and for accessing Google Play on your device. This access is strictly necessary even if you have bought nothing: whether a purchase of "Remove Ads" already exists for your Google account, for example from an earlier installation or from another device, the app can only learn through this query, and without it a buyer would first get ads again after a reinstall. The processing at Google Play is Google's responsibility (section 3). For the logs of the Google Play Billing Library (4.3) I rely, <strong>in my assessment</strong>, on my legitimate interest in offering purchases reliably through the library Google provides for this (Art. 6(1)(f) GDPR), and for the access to your device on § 25(2) no. 2 TDDDG, because purchase and check are only possible through this library and its logs cannot be switched off in the app. What Google does with the logs afterwards is Google's responsibility.</p>
+<h3>4.5 The program library for purchases</h3>
+<p>The app builds in the Google Play Billing Library through the program library <strong>Unity In-App Purchasing</strong> (<code>com.unity.purchasing</code>, version 5.3.1, with the package <code>com.unity.services.core</code>, version 1.14.0) from Unity. The library runs on your device and mediates there between the app and Google Play. For this the app creates no Unity account, does not sign in to Unity and uses no Unity analytics. <strong>Unity receives no data from this app.</strong> I checked this in two ways. First, the source code of both packages: as this app is built, it contains no path on which data goes to Unity, including Google's purchase receipt, the purchase token or a device identifier. Second, the network traffic: I let the package of version 1.1 built for Google Play run for more than twelve minutes each time, playing it and recording where the app opens connections, once without and once with consent to ads, each time with a second start and with the settings including the purchase row. There was no connection to a Unity server. No Google account was signed in during this measurement, so the connection to Google Play was not established; for everything the library does with an established connection — the query on start and the purchase — the statement rests solely on the review of the source code. Unity's general answers for Google's "Data safety" form for versions before 5.4 name diagnostic data and other performance data of the app; after these two checks, no such data goes from this app to Unity. Should this change with a later version, I will add it to this policy beforehand.</p>
 
 <h2>5. Ads</h2>
-<h3>5.1 The four ad placements, one by one</h3>
+<h3>5.1 The five ad placements, one by one</h3>
 <ul>
-  <li><strong>Ads between levels</strong> (interstitial): from level 6 at the earliest, at most every 4th level, at most 8 per day, each with 3 seconds of advance warning. Never in the middle of a level.</li>
-  <li><strong>Ad banner</strong> in its own strip at the bottom edge of the screen: from level 6 at the earliest, only on the island map, on the result card and while a chain reaction is running. Never while you are meant to tap the field, never in the daily board, never over the playing field. Text and image ads only, no videos.</li>
+  <li><strong>Ads between levels</strong> (interstitial, a full-screen ad): from level 6, only for levels on the island map, never in the daily board. They appear on two occasions only: after a <em>completed</em> level, and when you leave a level for the map after having failed at least 3 attempts in it. At least 5 minutes lie between two such ads. As a pure safeguard against errors there is an upper limit of 60 ads between levels per day, which normal play does not reach. Each comes with 3 seconds of advance warning. Never in the middle of a level, never on "Again", and never between two attempts.</li>
+  <li><strong>Ad banner</strong> in its own strip at the bottom edge of the screen: from level 6 (on the map, once level 6 is completed) permanently, while you play a level on the island map or look at the map — this includes while you tap the field. It sits in its strip below the playing field, never over the playing field and never over a tap area. Never in the daily board, and not during the advance warning, an ad between levels or a video, in the settings, or at the consent request.</li>
   <li><strong>Reward video "Second spark"</strong>: optional, only if you tap it.</li>
   <li><strong>Reward video "Aim help"</strong>: optional, only if you tap it.</li>
+  <li><strong>Reward video "Bulb"</strong> (hint with a video): optional, from level 4. The video only starts if you tap the bulb at the top right and confirm "Watch video" in the window. After 8 failed attempts in a row in a level, the game points to the bulb once per level with a short notice; that never starts a video by itself.</li>
 </ul>
 <h3>5.2 The SDK</h3>
-<p>Ads are delivered by the <strong>Google Mobile Ads SDK</strong> (AdMob), built in as <code>com.google.ads.mobile 11.5.0</code>. The consent request is presented by the <strong>Google User Messaging Platform</strong> (UMP), which is part of the same package.</p>
+<p>Ads are delivered by the <strong>Google Mobile Ads SDK</strong> (AdMob), built in as <code>com.google.ads.mobile 11.5.0</code> (containing the Android SDK <code>play-services-ads</code> 25.4.0). The consent request is presented by the <strong>Google User Messaging Platform</strong> (UMP, version 4.0.0), which is part of the same package.</p>
 <h3>5.3 What Google processes when delivering an ad</h3>
 <ul>
   <li>your device's <strong>advertising ID</strong> (Werbe-ID)</li>
+  <li>the <strong>app set ID</strong>: an identifier that Google Play services assign on your device to the apps of one developer; Google names it next to the advertising ID in its disclosure for the ad SDK. It cannot be reset in the Android settings, and deleting the advertising ID does not affect it.</li>
   <li>your IP address (truncated or not, according to Google's own statements)</li>
   <li>device and app details (model, operating system version, language, app version)</li>
   <li>an approximate location that Google estimates from the IP address — this is <em>not</em> a location permission; the game never reads your location</li>
   <li>your interaction with the ad (seen, tapped, dismissed)</li>
+  <li><strong>the ad SDK's own measurement</strong>, once the ads have started: app launches, taps and video views, plus diagnostic data on the performance of the app and the SDK (such as launch time, hang rate, energy use). With it, Google measures how the ads perform and, according to Google, uses the data for advertising, analytics and fraud prevention.</li>
 </ul>
-<h3>5.4 Consent first</h3>
-<p>Without your consent <code>MobileAds.Initialize</code> is never called, no request goes out, and the game is <strong>fully playable</strong>. Saying no locks nothing.</p>
+<p><strong>When this measurement begins:</strong> not when you open the app. The app sets the entry <code>com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT</code> to <code>true</code> in its manifest; the ad SDK then only starts to measure when the app starts the ads (<code>MobileAds.Initialize</code>, 5.4). Where consent is required and you do not give it, the ads never start, and neither does this measurement.</p>
+<h3>5.4 Consent first, where it is required</h3>
+<p>Until then the app calls neither ads nor the consent request. <strong>After you complete level 3</strong> the app shows, once per saved game and in every region, a notice screen about ads with a "Continue" button; it is not a consent. With this screen the app asks Google's consent request (UMP) whether your region requires consent. Google decides that by your location; according to Google it concerns the European Economic Area, the United Kingdom and Switzerland. After that the app checks again on every start whether this has changed (from version 1.1 no longer after the purchase "Remove Ads", 5.9).</p>
+<p><strong>The consent request itself</strong> transmits, in every region and also where no form follows, your IP address and device and app details (such as language and app identifier) to Google, and the UMP SDK stores its answer on your device (section 2). Legal basis: where consent is required, I must obtain it and be able to demonstrate it (Art. 6(1)(c) in conjunction with Art. 7(1) GDPR); otherwise my legitimate interest in starting ads without consent only where that is permitted (Art. 6(1)(f) GDPR). The access to your device that this request needs is covered by § 25(2) no. 2 TDDDG.</p>
+<p><strong>Where consent is required,</strong> Google shows a form. The app starts ads only if you have agreed there to the purpose "Store and/or access information on a device" (purpose 1 of the European TCF standard). Without your consent <code>MobileAds.Initialize</code> is never called, no request goes out to the ads, the ad SDK's measurement (5.3) does not start, and the game stays playable: saying no locks no level and no daily board. The three helps with a reward video are then not offered (section 9). If the app cannot read your answer, it prefers to show no ads.</p>
+<p><strong>In all other regions</strong> the app shows no consent request and no form: ads start there as soon as Google's check has found that ads may be requested. That is expressly not a consent given by you. Where the GDPR applies there too, I base the ads on my legitimate interest in financing the game without charge through advertising (Art. 6(1)(f) GDPR); you can object to this at any time (box "Right to object" in section 11). You can reset or delete the advertising ID in the Android settings (section 10). On age see section 13.</p>
 <h3>5.5 Withdrawal</h3>
-<p>You can withdraw at any time through <strong>Settings → Privacy → "Change consent"</strong> (Art. 7(3) sentence 4 GDPR: withdrawing must be as easy as giving). Ads already loaded are then discarded, and nothing new is requested.</p>
+<p>Where a consent is requested, you can withdraw at any time through <strong>Settings → Privacy → "Change consent"</strong> (Art. 7(3) sentence 4 GDPR: withdrawing must be as easy as giving). Ads already loaded are then discarded, a banner that is in place is removed, and nothing new is requested.</p>
 <h3>5.6 Profiling</h3>
-<p>Whether Google delivers personalised ads depends solely on your consent. If you decline, no ad is requested at all.</p>
+<p>Where consent is required, whether Google delivers personalised ads depends solely on it. If you decline there, no ad is requested at all. Where consent is not required, delivery follows Google's rules for that region; I have no influence on that.</p>
+<p><strong>Automated decision-making:</strong> I make no automated decision within the meaning of Art. 22 GDPR, and no profiling with legal effect on you. Google selects the ads automatically; to my knowledge this has no legal effect on you and does not similarly significantly affect you.</p>
 <h3>5.7 Maximum ad content rating</h3>
 <p>The maximum ad content rating is set to <strong>G</strong> — suitable for all ages.</p>
 <h3>5.8 Transfer to the USA</h3>
 <p>Google LLC is based in the USA. The transfer rests on the EU-US Data Privacy Framework, for which the European Commission issued an adequacy decision on <strong>10 July 2023</strong>; Google LLC is certified under it.</p>
 <h3>5.9 What the purchase changes</h3>
-<p><strong>Buying "Remove Ads" ends the ads between levels and the ad banner for good; no request is made for either afterwards.</strong> The two reward videos stay optional and are then granted without a video.</p>
-
+<p><strong>The purchase "Remove Ads" (from version 1.1, section 4) ends the ads between levels and the ad banner for good; afterwards no ad is requested for either.</strong> The three helps with a reward video (Second spark, Aim help, Bulb) are then available without a video. From the next start after the purchase the app calls neither the consent request (5.4) nor the ad SDK: the consent request no longer goes to Google, the ads no longer start, and so the ad SDK's measurement (5.3) no longer takes place either. For anyone who has not bought "Remove Ads", section 5 applies unchanged.</p>
 <h2>6. Statistics (usage analysis)</h2>
-<p><em>State of this version:</em> the analytics SDK is currently <strong>not</strong> part of the shipped package. This section applies as soon as it ships; the switch for it already exists in the game and is on by default, but it only takes effect after your consent.</p>
-<h3>6.1 What for</h3>
-<p>To see which level is too hard and which help is used. None of it serves advertising. Only game events are recorded: start of the session, a narrowly missed goal, a retry, a finished attempt (with level number and dots left), a completed level (with stars and attempts), a daily board, reward videos watched, ads between levels shown, the purchase of Remove Ads, and the consent itself.</p>
-<h3>6.2 The SDK</h3>
-<p>The statistics go through <strong>Google Analytics for Firebase</strong>. Google processes this data <strong>on my behalf</strong> (as a processor) and not as an independent controller — unlike the advertising in section 5.</p>
-<h3>6.3 What is processed</h3>
-<ul>
-  <li>an <strong>app instance identifier</strong> generated by Firebase (not the advertising ID, no account, no name)</li>
-  <li>device and app details (model, OS version, language, app version)</li>
-  <li>the events named in 6.1 with their numbers</li>
-</ul>
-<p>There is no name, no email address and no link to an account. Your saved game itself is <strong>not</strong> transmitted.</p>
-<h3>6.4 Legal basis, and the order</h3>
-<p><strong>Section 25(1) TDDDG</strong> for the access to your device (the app instance identifier) and <strong>Art. 6(1)(a) GDPR</strong> for the processing that follows. Before your consent nothing is recorded and nothing is sent: collection in the SDK is explicitly switched off and is only released by your answer.</p>
-<h3>6.5 Withdrawal and switching off</h3>
-<p>Two ways, both effective immediately: <strong>Settings → “Send statistics”</strong> switches the statistics off, and <strong>Settings → Privacy → “Change consent”</strong> withdraws the consent (Art. 7(3) sentence 4 GDPR).</p>
-<h3>6.6 Recipient and transfer</h3>
-<p>The recipient is Google (addresses in section 3). For the transfer to the USA the same applies as in 5.8: EU-US Data Privacy Framework, adequacy decision of 10 July 2023.</p>
+<p>No version of the app contains <strong>an analytics SDK of its own</strong> (neither Google Analytics for Firebase nor any other), and I receive <strong>no usage statistics</strong>. What you do in the game — levels, attempts, stars — stays on your device (section 2). This is separate from the measurement that the Google Mobile Ads SDK carries out for Google once the ads have started (app launches, taps, video views, diagnostic data; 5.3): it is part of the ads and goes to Google, not to me.</p>
 <h2>7. Permissions of the app</h2>
-<p>The shipped package declares the following permissions. Four belong to the game itself, six are brought in by the ad SDK, and one is present only when the purchase path ships with it.</p>
+<p>The shipped package declares the following permissions. Four belong to the game itself, six are brought in by the ad SDK, and one (<code>com.android.vending.BILLING</code>) belongs to the purchase path (section 4).</p>
 <div class="tabelle">
 <table>
 <thead><tr><th>Permission</th><th>What for</th></tr></thead>
@@ -173,7 +178,7 @@
 <tr><td><code>android.permission.FOREGROUND_SERVICE</code></td><td>brought in by the helper library <code>androidx.work</code>, which the ad SDK uses. <strong>My own code starts no foreground service.</strong></td></tr>
 <tr><td><code>android.permission.WAKE_LOCK</code></td><td>brought in by <code>play-services-measurement-sdk-api</code>, which the ad SDK uses. <strong>My own code uses no wake lock.</strong> The screen staying on while you play is done by the app's window, not by this permission.</td></tr>
 <tr><td><code>com.northloopgames.oneleft.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code></td><td>a purely app-internal protection marker at signature level, brought in by the helper library <code>androidx.core</code>. It grants no access to your device and is unreachable for other apps.</td></tr>
-<tr><td><code>com.android.vending.BILLING</code></td><td><strong>only when the purchase path is in the shipped package</strong> (section 4): handling the purchase through Google Play. It is absent from the package shipped today.</td></tr>
+<tr><td><code>com.android.vending.BILLING</code></td><td>handling the purchase "Remove Ads" through Google Play (section 4)</td></tr>
 </tbody>
 </table>
 </div>
@@ -186,24 +191,33 @@
   <li>no leaderboard, no chat, no content sharing</li>
   <li>no location access, no contacts, no camera, no microphone</li>
   <li>no notifications</li>
-  <li>no Crashlytics, no Unity Analytics, no Adjust, no AppsFlyer — the usage analysis runs through Google Analytics for Firebase alone and only with your consent (section 6)</li>
-  <li>no sharing with third parties other than Google, to the extent described above</li>
+  <li>no usage statistics of its own: no Google Analytics for Firebase, no Crashlytics, no Unity Analytics, no Adjust, no AppsFlyer (section 6); the ad SDK's measurement (5.3) goes to Google, not to me</li>
+  <li>no payment data: Google Play handles the purchase, and the app sees no payment data (section 4)</li>
+  <li>no sharing with third parties other than Google and, through Google's auction, the advertising partners approved by Google, to the extent described in section 3; on the program library for purchases from version 1.1, see 4.5</li>
 </ul>
 
 <h2>9. Do you have to provide data?</h2>
-<p><strong>No.</strong> Without consent and without a purchase the game is fully playable: all 120 levels and every daily board are reachable without money and without ads. "Again" is always instant and free.</p>
+<p><strong>No</strong> — neither by law nor by contract. All levels and every daily board are reachable without money, even if you give no consent to ads. <strong>Outside</strong> the EEA, the United Kingdom and Switzerland the ads are, however, part of the app: they start there without a request, and if you do not want them you can object (section 11) or not use the app. "Again" is always instant and free. <strong>The one exception are the three helps</strong> (Second spark, Aim help, Bulb): they come through an optional reward video or, from version 1.1, with the purchase "Remove Ads". Where consent is required (5.4) and you do not give it, no ad is requested; the three helps are then only available with "Remove Ads", otherwise you play without them. The purchase "Remove Ads" is optional and unlocks no levels.</p>
 
 <h2>10. Deletion</h2>
 <ul>
-  <li><strong>Uninstalling</strong> deletes all of the app's local data.</li>
-  <li>The <strong>advertising ID</strong> can be reset or deleted in the Android settings under "Privacy → Ads".</li>
+  <li><strong>Uninstalling</strong> deletes all of the app's data on the device. Android's backup remains and restores the saved game on a reinstall until you remove it (next point).</li>
+  <li>The <strong>advertising ID</strong> can be reset or deleted in the Android settings under "Privacy → Ads". The app set ID (5.3) cannot be deleted there.</li>
+  <li>A <strong>purchase</strong> (from version 1.1) is kept by Google Play and survives uninstalling; it can be restored (4.3). Access and deletion for purchase data are provided by Google (section 11).</li>
   <li>Android's <strong>Auto Backup</strong> can be removed under "Google → Backup".</li>
   <li>There is no account that could be deleted — none exists.</li>
 </ul>
 
 <h2>11. Your rights</h2>
 <p>You have the right of access (Art. 15 GDPR), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. 18), data portability (Art. 20), objection (Art. 21), and withdrawal of consent (Art. 7(3)).</p>
-<p>For the data that arises at <strong>Google</strong>, Google is the body that has to answer: I have no access to it and can neither hand it over nor delete it. Please use the pages named in section 3 for that.</p>
+<div class="kasten">
+<h3>Right to object (Art. 21 GDPR)</h3>
+<p>Where I base the ads on my legitimate interest (Art. 6(1)(f) GDPR, that is <strong>outside</strong> the EEA, the United Kingdom and Switzerland, 5.4), you can object <strong>at any time</strong> on grounds relating to your particular situation; to ads as direct marketing also without giving grounds. The same applies to the consent request insofar as it rests on point (f), and from version 1.1 to the check of purchases on start (4.4).</p>
+<p><strong>How:</strong> an informal email to <a href="mailto:support.northloopsgame@gmail.com">support.northloopsgame@gmail.com</a>. There is no switch for this in the app. Two ways take effect <strong>immediately and by yourself</strong>: delete the advertising ID in the Android settings ("Privacy → Ads"; it is then no longer sent, but the app set ID from 5.3 still is) or uninstall the app (then nothing more goes to Google).</p>
+<p><strong>What happens then:</strong> because the app knows no account and no identifier of yours, I cannot switch off the ads on your device remotely. I will reply to you and point to the two ways above; there is no other way that costs nothing. The purchase "Remove Ads" (from version 1.1, 5.9) also ends the ads, but it is a paid purchase and not a way to exercise your right to object: nobody has to buy anything in order to object.</p>
+<p><strong>The check of purchases on start</strong> (from version 1.1, 4.3 and 4.4) runs between the app and Google Play, together with the logs of the Google Play Billing Library to Google (4.3); nothing reaches me, and there is no switch in the app that turns this off. Following your objection I will examine whether grounds for the check and these logs override your interests, and reply to you. The only way that takes effect immediately by yourself is uninstalling the app.</p>
+</div>
+<p>For the data that arises at <strong>Google</strong>, including purchases through Google Play, Google is the body that has to answer: I have no access to it and can neither hand it over nor delete it. Please use the pages named in section 3 for that.</p>
 
 <h2>12. Right to lodge a complaint</h2>
 <p>You may lodge a complaint with a data protection supervisory authority. The competent one is:</p>
@@ -214,10 +228,11 @@
 </ul>
 
 <h2>13. Children</h2>
-<p>The target audience is <strong>13 years and older</strong>. The game is not directed at children under 13. Ad content is capped at <strong>G</strong> (see 5.7).</p>
+<p>The app is directed at people aged <strong>16 and over</strong>; the target audience in Google Play is set to 16+. It is not directed at children and teenagers under 16. Ad content is capped at <strong>G</strong> (see 5.7).</p>
+<p><strong>Why 16:</strong> Where ads need your consent (5.4), consent is the only legal basis for the advertising ID and the ads. Under Art. 8(1) GDPR a consent is valid in Germany without more only from the age of 16; for younger people it needs the consent of the holders of parental responsibility (other EU states set the limit lower, down to 13). The game has no age check and cannot verify age, and it passes no age information to Google. If you are not yet 16, please decline the consent unless your parents or guardians have agreed; levels and daily boards then remain playable (section 9). Parents or guardians who believe that a child under 16 has transmitted data can write to me at the address in section 15.</p>
 
 <h2>14. Changes</h2>
-<p>This version is dated <strong>5 October 2026</strong>. Changes are published on this page; the version in force is the one available here.</p>
+<p>This version is dated <strong>19 October 2026</strong> and applies from version 1.1 of the app, the first version on Google Play (with the purchase "Remove Ads", section 4). Changes are published on this page; the version in force is the one available here.</p>
 
 <h2>15. Contact</h2>
 <p>Questions about privacy: <a href="mailto:support.northloopsgame@gmail.com">support.northloopsgame@gmail.com</a></p>
